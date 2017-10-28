@@ -12,10 +12,10 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.movieName)
+            @Html.DisplayNameFor(model => model.genre.ID)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.genreID)
+            @Html.DisplayNameFor(model => model.movieName)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.dateAdded)
@@ -35,10 +35,10 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.movieName)
+            @Html.DisplayFor(modelItem => item.genre.ID)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.genreID)
+            @Html.DisplayFor(modelItem => item.movieName)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.dateAdded)

@@ -53,5 +53,9 @@ namespace NetFleeks.Models
     public class UsersDBContext : DbContext
     {
         public DbSet<Users> users { get; set; }
+
+        public System.Data.Entity.DbSet<NetFleeks.Models.Genres> Genres { get; set; }
+
+        public System.Data.Entity.DbSet<NetFleeks.Models.MembershipType> MembershipTypes { get; set; }
     }
 }

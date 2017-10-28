@@ -5,10 +5,11 @@ using System.Linq;
 using System.Web;
 using NetFleeks.Models;
 using System.Data.Entity;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace NetFleeks.Models
 {
-    public class Users
+    public class Users : IdentityUser  
     {
         [Required]
         [Display(Name = "User ID")]

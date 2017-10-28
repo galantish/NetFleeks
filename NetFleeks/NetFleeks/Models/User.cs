@@ -9,17 +9,18 @@ namespace NetFleeks.Models
 {
     public class User
     {
+        [Required]
         [Display(Name = "User ID")]
         public int ID { get; set; }
 
         [Required]
-        [StringLength(50)]
         [Display(Name = "First Name")]
-        public string fName { get; set; }
-        [Required]
-
         [StringLength(50)]
+        public string fName { get; set; }
+
+        [Required]
         [Display(Name = "Last Name")]
+        [StringLength(50)]
         public string lName { get; set; }
 
         [Display(Name = "Gender")]

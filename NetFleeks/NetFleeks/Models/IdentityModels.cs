@@ -29,5 +29,7 @@ namespace NetFleeks.Models
         {
             return new ApplicationDbContext();
         }
+
+        public System.Data.Entity.DbSet<NetFleeks.Models.Movies> Movies { get; set; }
     }
 }

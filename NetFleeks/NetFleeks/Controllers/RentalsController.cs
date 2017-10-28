@@ -12,7 +12,7 @@ namespace NetFleeks.Controllers
 {
     public class RentalsController : Controller
     {
-        private RentalsDBContext db = new RentalsDBContext();
+        private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Rentals
         public ActionResult Index()

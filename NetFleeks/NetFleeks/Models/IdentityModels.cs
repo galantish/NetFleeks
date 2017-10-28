@@ -24,7 +24,7 @@ namespace NetFleeks.Models
         public DbSet<Movies> Movies { get; set; }
         public DbSet<Genres> Genres { get; set; }
         public DbSet<MembershipType> MembershipTypes { get; set; }
-        //public DbSet<Users> Users { get; set; }
+        public DbSet<Users> Users { get; set; }
         public DbSet<Rentals> Rentals { get; set; }
 
         public ApplicationDbContext()

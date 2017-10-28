@@ -12,12 +12,12 @@ namespace NetFleeks.Controllers
 {
     public class MoviesController : Controller
     {
-        private MoviesDBContext db = new MoviesDBContext();
+        private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Movies
         public ActionResult Index()
         {
-            var movies = db.movies.Include(m => m.genre);
+            var movies = db.Movies.Include(m => m.genre);
             return View(movies.ToList());
         }
 
@@ -28,7 +28,7 @@ namespace NetFleeks.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Movies movies = db.movies.Find(id);
+            Movies movies = db.Movies.Find(id);
             if (movies == null)
             {
                 return HttpNotFound();
@@ -52,7 +52,7 @@ namespace NetFleeks.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.movies.Add(movies);
+                db.Movies.Add(movies);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -68,7 +68,7 @@ namespace NetFleeks.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Movies movies = db.movies.Find(id);
+            Movies movies = db.Movies.Find(id);
             if (movies == null)
             {
                 return HttpNotFound();
@@ -101,7 +101,7 @@ namespace NetFleeks.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Movies movies = db.movies.Find(id);
+            Movies movies = db.Movies.Find(id);
             if (movies == null)
             {
                 return HttpNotFound();
@@ -114,8 +114,8 @@ namespace NetFleeks.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Movies movies = db.movies.Find(id);
-            db.movies.Remove(movies);
+            Movies movies = db.Movies.Find(id);
+            db.Movies.Remove(movies);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

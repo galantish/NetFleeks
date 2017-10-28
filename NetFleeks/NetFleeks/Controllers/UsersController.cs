@@ -12,12 +12,12 @@ namespace NetFleeks.Controllers
 {
     public class UsersController : Controller
     {
-        private UsersDBContext db = new UsersDBContext();
+        private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Users
         public ActionResult Index()
         {
-            var users = db.users.Include(u => u.genre).Include(u => u.membershipType);
+            var users = db.Users.Include(u => u.genre).Include(u => u.membershipType);
             return View(users.ToList());
         }
 
@@ -28,7 +28,7 @@ namespace NetFleeks.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Users users = db.users.Find(id);
+            Users users = db.Users.Find(id);
             if (users == null)
             {
                 return HttpNotFound();
@@ -53,7 +53,7 @@ namespace NetFleeks.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.users.Add(users);
+                db.Users.Add(users);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -70,7 +70,7 @@ namespace NetFleeks.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Users users = db.users.Find(id);
+            Users users = db.Users.Find(id);
             if (users == null)
             {
                 return HttpNotFound();
@@ -105,7 +105,7 @@ namespace NetFleeks.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Users users = db.users.Find(id);
+            Users users = db.Users.Find(id);
             if (users == null)
             {
                 return HttpNotFound();
@@ -118,8 +118,8 @@ namespace NetFleeks.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Users users = db.users.Find(id);
-            db.users.Remove(users);
+            Users users = db.Users.Find(id);
+            db.Users.Remove(users);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

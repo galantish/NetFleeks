@@ -10,6 +10,7 @@ namespace NetFleeks.Models
 
         [Required]
         [StringLength(100)]
+        [Display(Name = "Genre Name")]
         public string genreName { get; set; } 
     }
 }

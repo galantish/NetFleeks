@@ -44,5 +44,7 @@ namespace NetFleeks.Models
         {
             public DbSet<Movies> movies { get; set; }
         }
+     
+
     }
 }

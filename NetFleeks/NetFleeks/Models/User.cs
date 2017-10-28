@@ -7,7 +7,8 @@ namespace NetFleeks.Models
 {
     public class User
     {
-        public int Id { get; set; }
+        [Display(Name = "User ID")]
+        public int ID { get; set; }
 
         [Required]
         [StringLength(255)]

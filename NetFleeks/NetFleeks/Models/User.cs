@@ -39,8 +39,10 @@ namespace NetFleeks.Models
         [Display(Name = "Date of Birth")]
         public DateTime? birth { get; set; }
 
+        public Genres genre { get; set; } 
+
         [Display(Name = "Favorite Genre")]
-        public int MyProperty { get; set; }
+        public int genreID { get; set; }
 
     }
 }

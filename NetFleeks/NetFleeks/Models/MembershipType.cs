@@ -26,9 +26,4 @@ namespace NetFleeks.Models
        
 
     }
-
-    public class MembershipDBContext : DbContext
-    {
-        public DbSet<MembershipType> membershipTypes { get; set; }
-    }
 }

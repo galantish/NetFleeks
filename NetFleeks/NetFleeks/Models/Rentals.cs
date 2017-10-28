@@ -15,8 +15,4 @@ namespace NetFleeks.Models
         public DateTime rentalExpiration { get; set; }
     }
 
-    public class RentalsDBContext : DbContext
-    {
-        public DbSet<Rentals> Rentals { get; set; }
-    }
 }

@@ -22,9 +22,4 @@ namespace NetFleeks.Models
             Adult 
         } 
     }
-
-    public class GenresDBContext : DbContext
-    {
-        public DbSet<Genres> Genres { get; set; }
-    }
 }

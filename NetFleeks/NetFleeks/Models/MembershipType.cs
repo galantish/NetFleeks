@@ -8,17 +8,21 @@ namespace NetFleeks.Models
 {
     public class MembershipType
     {
-        public byte Id { get; set; }
+        [Required]
+        [Display(Name = "Membership Type ID")]
+        public int ID { get; set; }
 
         [Required]
         [Display(Name = "Membership Type")]
         [StringLength(100)]
-        public string Name { get; set; }
-        public short SignUpFee { get; set; }
-        public byte DurationInMonths { get; set; }
-        public byte DiscountRate { get; set; }
+        public string membershipType { get; set; }
 
-        public static readonly byte Unknown = 0;
-        public static readonly byte PayAsYouGo = 1;
+        [Display(Name = "Duration")]
+        [StringLength(100)]
+        public int duration { get; set; }
+
+        [Display(Name = "Payment")]
+        [StringLength(100)]
+        public int payment { get; set; }
     }
 }

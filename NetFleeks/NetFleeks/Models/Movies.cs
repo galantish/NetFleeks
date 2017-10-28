@@ -8,6 +8,7 @@ namespace NetFleeks.Models
 {
     public class Movies
     {
+        [Required]
         [Display(Name = "Movie ID")]
         public int ID { get; set; }
 

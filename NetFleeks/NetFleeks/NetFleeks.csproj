@@ -198,6 +198,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\MembershipTypesController.cs" />
     <Compile Include="Controllers\MoviesController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Global.asax.cs">
@@ -289,6 +290,11 @@
     <Content Include="Views\Movies1\Details.cshtml" />
     <Content Include="Views\Movies1\Edit.cshtml" />
     <Content Include="Views\Movies1\Index.cshtml" />
+    <Content Include="Views\MembershipTypes\Create.cshtml" />
+    <Content Include="Views\MembershipTypes\Delete.cshtml" />
+    <Content Include="Views\MembershipTypes\Details.cshtml" />
+    <Content Include="Views\MembershipTypes\Edit.cshtml" />
+    <Content Include="Views\MembershipTypes\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

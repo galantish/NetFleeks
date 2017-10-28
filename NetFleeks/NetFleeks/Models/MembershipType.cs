@@ -18,11 +18,9 @@ namespace NetFleeks.Models
         public string membershipType { get; set; }
 
         [Display(Name = "Duration")]
-        [StringLength(100)]
         public int duration { get; set; }
 
         [Display(Name = "Payment")]
-        [StringLength(100)]
         public int payment { get; set; }
     }
 }

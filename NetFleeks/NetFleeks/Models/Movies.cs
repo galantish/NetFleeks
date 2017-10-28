@@ -17,9 +17,9 @@ namespace NetFleeks.Models
         [StringLength(100)]
         public string movieName { get; set; }
 
-       // [Required]
-        //[Display(Name = "Genre")]
-        //public Genre genre { get; set; }
+        [Required]
+        [Display(Name = "Genre")]
+        public Genres genre { get; set; }
 
         [Required]
         [Display(Name = "Genre ID")]

@@ -11,6 +11,8 @@ namespace NetFleeks.Models
         public byte Id { get; set; }
 
         [Required]
+        [Display(Name = "Membership Type")]
+        [StringLength(100)]
         public string Name { get; set; }
         public short SignUpFee { get; set; }
         public byte DurationInMonths { get; set; }

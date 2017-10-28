@@ -31,17 +31,19 @@ namespace NetFleeks.Models
             Female
         }
 
+        [Display(Name = "Membership Type")]
         public MembershipType membershipType { get; set; }
 
-        [Display(Name = "Membership Type")]
+        [Display(Name = "Membership Type ID")]
         public int membershipTypeID { get; set; }
 
         [Display(Name = "Date of Birth")]
         public DateTime? birth { get; set; }
 
+        [Display(Name = "Membership Type")]
         public Genres genre { get; set; } 
 
-        [Display(Name = "Favorite Genre")]
+        [Display(Name = "Favorite Genre ID")]
         public int genreID { get; set; }
 
     }

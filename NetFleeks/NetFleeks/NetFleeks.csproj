@@ -287,11 +287,6 @@
     <Content Include="Views\Users\Details.cshtml" />
     <Content Include="Views\Users\Edit.cshtml" />
     <Content Include="Views\Users\Index.cshtml" />
-    <Content Include="Views\Movies1\Create.cshtml" />
-    <Content Include="Views\Movies1\Delete.cshtml" />
-    <Content Include="Views\Movies1\Details.cshtml" />
-    <Content Include="Views\Movies1\Edit.cshtml" />
-    <Content Include="Views\Movies1\Index.cshtml" />
     <Content Include="Views\MembershipTypes\Create.cshtml" />
     <Content Include="Views\MembershipTypes\Delete.cshtml" />
     <Content Include="Views\MembershipTypes\Details.cshtml" />

@@ -11,12 +11,12 @@ namespace NetFleeks.Models
         public int ID { get; set; }
 
         [Required]
-        [StringLength(255)]
+        [StringLength(50)]
         [Display(Name = "First Name")]
         public string fName { get; set; }
         [Required]
 
-        [StringLength(255)]
+        [StringLength(50)]
         [Display(Name = "Last Name")]
         public string lName { get; set; }
 

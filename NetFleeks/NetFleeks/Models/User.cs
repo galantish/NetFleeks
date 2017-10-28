@@ -33,7 +33,7 @@ namespace NetFleeks.Models
         public MembershipType membershipType { get; set; }
 
         [Display(Name = "Membership Type")]
-        public byte MembershipTypeId { get; set; }
+        public int membershipTypeID { get; set; }
 
         [Display(Name = "Date of Birth")]
         public DateTime? birth { get; set; }

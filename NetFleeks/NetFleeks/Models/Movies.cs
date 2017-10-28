@@ -45,5 +45,7 @@ namespace NetFleeks.Models
     public class MoviesDBContext : DbContext
     {
         public DbSet<Movies> movies { get; set; }
+
+        public System.Data.Entity.DbSet<NetFleeks.Models.Genres> Genres { get; set; }
     }
 }

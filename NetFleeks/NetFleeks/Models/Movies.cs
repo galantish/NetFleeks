@@ -39,12 +39,11 @@ namespace NetFleeks.Models
         [Display(Name = "Summary")]
         [StringLength(500)]
         public string summary { get; set; }
-
-        public class MoviesDBContext : DbContext
-        {
-            public DbSet<Movies> movies { get; set; }
-        }
      
+    }
 
+    public class MoviesDBContext : DbContext
+    {
+        public DbSet<Movies> movies { get; set; }
     }
 }

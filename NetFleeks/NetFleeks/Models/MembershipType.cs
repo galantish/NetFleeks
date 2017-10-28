@@ -23,12 +23,12 @@ namespace NetFleeks.Models
 
         [Display(Name = "Payment")]
         public int payment { get; set; }
+       
 
+    }
 
-        public class MembershipDBContext : DbContext
-        {
-            public DbSet<MembershipType> membershipTypes { get; set; }
-        }
-
+    public class MembershipDBContext : DbContext
+    {
+        public DbSet<MembershipType> membershipTypes { get; set; }
     }
 }

@@ -9,7 +9,7 @@ using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace NetFleeks.Models
 {
-    public class Users : IdentityUser  
+    public class Users
     {
         [Required]
         [Display(Name = "User ID")]

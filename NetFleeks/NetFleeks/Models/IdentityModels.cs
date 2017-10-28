@@ -20,6 +20,13 @@ namespace NetFleeks.Models
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
+ 
+        public DbSet<Movies> Movies { get; set; }
+        public DbSet<Genres> Genres { get; set; }
+        public DbSet<MembershipType> MembershipTypes { get; set; }
+        //public DbSet<Users> Users { get; set; }
+        public DbSet<Rentals> Rentals { get; set; }
+
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {
@@ -29,11 +36,5 @@ namespace NetFleeks.Models
         {
             return new ApplicationDbContext();
         }
-
-        public System.Data.Entity.DbSet<NetFleeks.Models.Movies> Movies { get; set; }
-
-        public System.Data.Entity.DbSet<NetFleeks.Models.Genres> Genres { get; set; }
-
-        public System.Data.Entity.DbSet<NetFleeks.Models.MembershipType> MembershipTypes { get; set; }
     }
 }

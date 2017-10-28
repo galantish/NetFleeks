@@ -12,13 +12,16 @@ namespace NetFleeks.Models
         public int ID { get; set; }
 
         [Required]
+        [Display(Name = "Movie Name")]
         [StringLength(100)]
         public string movieName { get; set; }
 
-        //public Genre genre { get; set; }
-
-        [Display(Name = "Genre ID")]
         [Required]
+        [Display(Name = "Genre")]
+        public Genre genre { get; set; }
+
+        [Required]
+        [Display(Name = "Genre ID")]
         public int genreID { get; set; }
 
         [Display(Name = "Date Added")]

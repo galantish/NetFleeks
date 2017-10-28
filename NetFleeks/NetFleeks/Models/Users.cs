@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 using NetFleeks.Models;
+using System.Data.Entity;
 
 namespace NetFleeks.Models
 {
@@ -47,5 +48,10 @@ namespace NetFleeks.Models
         [Display(Name = "Favorite Genre ID")]
         public int genreID { get; set; }
 
+    }
+
+    public class UsersDBContext : DbContext
+    {
+        public DbSet<Users> users { get; set; }
     }
 }

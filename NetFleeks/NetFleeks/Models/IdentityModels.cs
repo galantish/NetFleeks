@@ -31,5 +31,9 @@ namespace NetFleeks.Models
         }
 
         public System.Data.Entity.DbSet<NetFleeks.Models.Movies> Movies { get; set; }
+
+        public System.Data.Entity.DbSet<NetFleeks.Models.Genres> Genres { get; set; }
+
+        public System.Data.Entity.DbSet<NetFleeks.Models.MembershipType> MembershipTypes { get; set; }
     }
 }

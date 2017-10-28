@@ -7,7 +7,7 @@ using NetFleeks.Models;
 
 namespace NetFleeks.Models
 {
-    public class User
+    public class Users
     {
         [Required]
         [Display(Name = "User ID")]

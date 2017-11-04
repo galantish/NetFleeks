@@ -1,7 +1,7 @@
 ﻿
 .dropdown.dropdown-lg .dropdown-menu {
     margin-top: -1px;
-    padding: 6px 20px;
+    padding: 6px 6px;
 }
 
 .input-group-btn .btn-group {
@@ -35,7 +35,7 @@
 
 @media screen and (min-width: 768px) {
     #adv-search {
-        width: 500px;
+        width: 350px;
         margin: 0 auto;
     }
 
@@ -44,6 +44,6 @@
     }
 
         .dropdown.dropdown-lg .dropdown-menu {
-            min-width: 500px;
+            min-width: 400px;
         }
 }

@@ -13,7 +13,7 @@ namespace NetFleeks.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201711040850388_Init"; }
+            get { return "201711040905160_Init"; }
         }
         
         string IMigrationMetadata.Source

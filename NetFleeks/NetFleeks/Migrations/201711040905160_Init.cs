@@ -40,11 +40,6 @@ namespace NetFleeks.Migrations
                         payment = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.ID);
-            Sql(@"SET IDENTITY_INSERT [dbo].[MembershipTypes] ON
-            INSERT INTO [dbo].[MembershipTypes] ([ID], [membershipType], [duration], [payment]) VALUES (1, N'Free', 99999, 0)
-            INSERT INTO [dbo].[MembershipTypes] ([ID], [membershipType], [duration], [payment]) VALUES (2, N'Premium', 12, 10)
-            SET IDENTITY_INSERT [dbo].[MembershipTypes] OFF");
-           
             
             CreateTable(
                 "dbo.Movies",
@@ -110,35 +105,6 @@ namespace NetFleeks.Migrations
                 .ForeignKey("dbo.MembershipTypes", t => t.membershipTypeID, cascadeDelete: true)
                 .Index(t => t.membershipTypeID)
                 .Index(t => t.genreID);
-
-            Sql(@"SET IDENTITY_INSERT [dbo].[Users] ON
-            INSERT INTO [dbo].[Users] ([ID], [fName], [lName], [gender], [membershipTypeID], [birth], [genreID]) VALUES (3, N'Bar', N'Genish', N'Female', 2, N'1993-06-16 00:00:00', 1)
-            INSERT INTO [dbo].[Users] ([ID], [fName], [lName], [gender], [membershipTypeID], [birth], [genreID]) VALUES (4, N'Shaglant', N'Galanti', N'Female', 2, N'1993-04-06 00:00:00', 6)
-            INSERT INTO [dbo].[Users] ([ID], [fName], [lName], [gender], [membershipTypeID], [birth], [genreID]) VALUES (5, N'Adi', N'Haviv', N'Male', 2, N'1993-08-01 00:00:00', 4)
-            INSERT INTO [dbo].[Users] ([ID], [fName], [lName], [gender], [membershipTypeID], [birth], [genreID]) VALUES (6, N'Shai', N'Horovitz', N'Male', 2, N'1985-03-23 00:00:00', 2)
-            INSERT INTO [dbo].[Users] ([ID], [fName], [lName], [gender], [membershipTypeID], [birth], [genreID]) VALUES (7, N'Igor', N'Rochli', N'Male', 1, N'1975-04-28 00:00:00', 5)
-            INSERT INTO [dbo].[Users] ([ID], [fName], [lName], [gender], [membershipTypeID], [birth], [genreID]) VALUES (9, N'Nofar', N'Akrabi', N'Female', 1, N'1990-02-18 00:00:00', 1)
-            INSERT INTO [dbo].[Users] ([ID], [fName], [lName], [gender], [membershipTypeID], [birth], [genreID]) VALUES (10, N'Matan', N'Snir', N'Male', 1, N'1988-07-13 00:00:00', 2)
-            INSERT INTO [dbo].[Users] ([ID], [fName], [lName], [gender], [membershipTypeID], [birth], [genreID]) VALUES (11, N'Shaked', N'Galanti', N'Female', 2, N'1999-10-28 00:00:00', 8)
-            INSERT INTO [dbo].[Users] ([ID], [fName], [lName], [gender], [membershipTypeID], [birth], [genreID]) VALUES (12, N'Snir', N'Balgaly', N'Male', 2, N'1989-10-10 00:00:00', 10)
-            INSERT INTO [dbo].[Users] ([ID], [fName], [lName], [gender], [membershipTypeID], [birth], [genreID]) VALUES (14, N'Gal', N'Gelon', N'Female', 1, N'1978-12-31 00:00:00', 2)
-            INSERT INTO [dbo].[Users] ([ID], [fName], [lName], [gender], [membershipTypeID], [birth], [genreID]) VALUES (15, N'Merryman', N'Ethyl', N'female', 2, N'1991-05-11 00:00:00', 4)
-            INSERT INTO [dbo].[Users] ([ID], [fName], [lName], [gender], [membershipTypeID], [birth], [genreID]) VALUES (16, N'Admire', N'Arlena', N'male', 1, N'1966-07-08 00:00:00', 3)
-            INSERT INTO [dbo].[Users] ([ID], [fName], [lName], [gender], [membershipTypeID], [birth], [genreID]) VALUES (18, N'Lachapelle', N'Louetta', N'male', 1, N'1969-12-04 00:00:00', 3)
-            INSERT INTO [dbo].[Users] ([ID], [fName], [lName], [gender], [membershipTypeID], [birth], [genreID]) VALUES (21, N'Fabela', N'Monserrate', N'female', 2, N'1970-12-07 00:00:00', 3)
-            INSERT INTO [dbo].[Users] ([ID], [fName], [lName], [gender], [membershipTypeID], [birth], [genreID]) VALUES (22, N'Arrowsmith', N'Mica', N'female', 1, N'1972-12-08 00:00:00', 5)
-            INSERT INTO [dbo].[Users] ([ID], [fName], [lName], [gender], [membershipTypeID], [birth], [genreID]) VALUES (23, N'Dau', N'Corrie', N'female', 1, N'1977-04-01 00:00:00', 9)
-            INSERT INTO [dbo].[Users] ([ID], [fName], [lName], [gender], [membershipTypeID], [birth], [genreID]) VALUES (27, N'Swarthout', N'Kris', N'male', 2, N'1983-12-03 00:00:00', 1)
-            INSERT INTO [dbo].[Users] ([ID], [fName], [lName], [gender], [membershipTypeID], [birth], [genreID]) VALUES (29, N'Mace', N'David', N'male', 1, N'1988-05-07 00:00:00', 7)
-            INSERT INTO [dbo].[Users] ([ID], [fName], [lName], [gender], [membershipTypeID], [birth], [genreID]) VALUES (33, N'Kari', N'Chrystal', N'male', 1, N'1996-05-03 00:00:00', 8)
-            INSERT INTO [dbo].[Users] ([ID], [fName], [lName], [gender], [membershipTypeID], [birth], [genreID]) VALUES (34, N'Rylander', N'Yolanda', N'female', 1, N'1996-04-06 00:00:00', 1)
-            INSERT INTO [dbo].[Users] ([ID], [fName], [lName], [gender], [membershipTypeID], [birth], [genreID]) VALUES (40, N'Bosh', N'Juliette', N'female', 2, N'1993-09-05 00:00:00', 2)
-            INSERT INTO [dbo].[Users] ([ID], [fName], [lName], [gender], [membershipTypeID], [birth], [genreID]) VALUES (51, N'Riebel', N'Josefina', N'female', 1, N'1980-04-06 00:00:00', 2)
-            INSERT INTO [dbo].[Users] ([ID], [fName], [lName], [gender], [membershipTypeID], [birth], [genreID]) VALUES (52, N'Nero', N'Clint', N'male', 2, N'1980-02-12 00:00:00', 1)
-            INSERT INTO [dbo].[Users] ([ID], [fName], [lName], [gender], [membershipTypeID], [birth], [genreID]) VALUES (53, N'Dhillon', N'Dinorah', N'male', 2, N'1991-08-01 00:00:00', 6)
-            INSERT INTO [dbo].[Users] ([ID], [fName], [lName], [gender], [membershipTypeID], [birth], [genreID]) VALUES (54, N'Linz', N'Gemma', N'female', 2, N'1964-11-03 00:00:00', 7)
-            SET IDENTITY_INSERT [dbo].[Users] OFF
-            ");
             
             CreateTable(
                 "dbo.AspNetRoles",

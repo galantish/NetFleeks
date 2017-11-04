@@ -4,12 +4,27 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Movies</h2>
+<h1><b>Movies</b></h1>
 
 <p>
     @Html.ActionLink("Create New Movie", "Create")
 </p>
-<table class="table">
+
+<style>
+    #movieTable tr:nth-child(even){background-color:  #e6f3ff;}
+    #movieTable tr:hover {background-color: #e6f3ff;}
+    #movieTable th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #0069cc;
+    color: white;
+}
+
+</style>
+
+
+<table class="table" id="movieTable">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.genre.ID)

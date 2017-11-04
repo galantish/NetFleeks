@@ -17,8 +17,15 @@ namespace NetFleeks.Controllers
         // GET: Movies
         public ActionResult Index()
         {
-            var movies = db.Movies.Include(m => m.genre);
-            return View(movies.ToList());
+            var movies = db.Movies.Include(m => m.genre);   
+            //return View(movies.ToList());
+
+            if (User.IsInRole("Manager"))
+                return View("Index",movies.ToList());
+            else
+                return View("ReadOnlyIndex", movies.ToList());
+
+            
         }
 
         // GET: Movies/Details/5

@@ -309,6 +309,7 @@
     <Content Include="Views\Rentals\Edit.cshtml" />
     <Content Include="Views\Rentals\Index.cshtml" />
     <Content Include="Views\Home\AdminIndex.cshtml" />
+    <Content Include="Views\Movies\ReadOnlyIndex.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

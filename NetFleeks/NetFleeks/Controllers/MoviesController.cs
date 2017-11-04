@@ -43,7 +43,9 @@ namespace NetFleeks.Controllers
             return View(movies);
         }
 
+
         // GET: Movies/Create
+        [Authorize(Roles = "Manager")]
         public ActionResult Create()
         {
             ViewBag.genreID = new SelectList(db.Genres, "ID", "ID");
@@ -55,6 +57,7 @@ namespace NetFleeks.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Manager")]
         public ActionResult Create([Bind(Include = "ID,movieName,genreID,dateAdded,releaseDate,actors,summary")] Movies movies)
         {
             if (ModelState.IsValid)
@@ -69,6 +72,7 @@ namespace NetFleeks.Controllers
         }
 
         // GET: Movies/Edit/5
+        [Authorize(Roles = "Manager")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -89,6 +93,7 @@ namespace NetFleeks.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Manager")]
         public ActionResult Edit([Bind(Include = "ID,movieName,genreID,dateAdded,releaseDate,actors,summary")] Movies movies)
         {
             if (ModelState.IsValid)
@@ -102,6 +107,7 @@ namespace NetFleeks.Controllers
         }
 
         // GET: Movies/Delete/5
+        [Authorize(Roles = "Manager")]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -127,6 +133,7 @@ namespace NetFleeks.Controllers
             return RedirectToAction("Index");
         }
 
+        [Authorize(Roles = "Manager")]
         protected override void Dispose(bool disposing)
         {
             if (disposing)

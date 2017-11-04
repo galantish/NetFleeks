@@ -54,7 +54,6 @@ namespace NetFleeks
             manager.PasswordValidator = new PasswordValidator
             {
                 RequiredLength = 6,
-                RequireNonLetterOrDigit = true,
                 RequireDigit = true,
                 RequireLowercase = true,
                 RequireUppercase = true,
@@ -85,6 +84,11 @@ namespace NetFleeks
                     new DataProtectorTokenProvider<ApplicationUser>(dataProtectionProvider.Create("ASP.NET Identity"));
             }
             return manager;
+        }
+
+        internal void AddToRoleAsync()
+        {
+            throw new NotImplementedException();
         }
     }
 

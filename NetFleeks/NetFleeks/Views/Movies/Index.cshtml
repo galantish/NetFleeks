@@ -32,10 +32,10 @@
                         <div class="dropdown dropdown-lg">
                             <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><span class="caret"></span></button>
                             <div class="dropdown-menu dropdown-menu-right" role="menu">
-                                <form class="form-horizontal" role="form">
+                                <form class="form-horizontal" role="form" method="post" action="~/Movies/Search">
                                     <div class="form-group">
                                         <label for="filter"> &nbsp; Genre &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-                                        <select class="form-control" style="width:50%">
+                                        <select class="form-control" style="width:50%" name="genreID">
                                             <option value="0" selected></option>
                                             <option value="1">Comedy</option>
                                             <option value="2">Romance</option>
@@ -53,7 +53,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="filter"> &nbsp; Membership Type&nbsp; &nbsp;</label>
-                                        <select class="form-control" style="width:50%">
+                                        <select class="form-control" style="width:50%" name="membershipTypeID">
                                             <option value="0" selected></option>
                                             <option value="1">Free</option>
                                             <option value="2">Premium</option>
@@ -61,15 +61,11 @@
                                     </div>
                                     <div class="input-group date" data-provide="datepicker">
                                         <label for="filter"> &nbsp; Release Date &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;</label>
-                                        <input type="text" class="form-control" style="width:55%">
+                                        <input type="text" class="form-control" style="width:55%" name="date">
                                         <div class="input-group-addon" style="width:20px">
                                             <span class="glyphicon glyphicon-th"></span>
                                         </div>
                                     </div>
-                                    <script type="text/javascript">
-
-                                    </script>
-
                                     <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
                                 </form>
                             </div>

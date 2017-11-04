@@ -14,11 +14,14 @@ namespace NetFleeks.Models
         public enum genreEnum 
         { 
             Comedy, 
-            RomanticComedy, 
+            Romance, 
             Drama, 
             Action, 
-            Horror, 
+            Horror,
+            SciFi,
             Kids, 
+            Family,
+            Biography,
             Adult 
         } 
     }

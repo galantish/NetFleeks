@@ -1,5 +1,15 @@
 ﻿@model IEnumerable<NetFleeks.Models.Movies>
 
+<!--  jQuery -->
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+
+<!-- Isolated Version of Bootstrap, not needed if your site already uses Bootstrap -->
+<link rel="stylesheet" href="https://formden.com/static/cdn/bootstrap-iso.css" />
+
+<!-- Bootstrap Date-Picker Plugin -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css" />
+
 <link rel="stylesheet" href="~/Content/Search.css" />
 
 @{
@@ -11,11 +21,12 @@
 <p>
     @Html.ActionLink("Create New Movie", "Create")
 </p>
+
 <div class="container">
     <div class="row">
         <div class="col-md-12">
             <div class="input-group" id="adv-search">
-                <input type="text" class="form-control" placeholder="Search for snippets" />
+                <input type="text" class="form-control" placeholder="Search" />
                 <div class="input-group-btn">
                     <div class="btn-group" role="group">
                         <div class="dropdown dropdown-lg">
@@ -23,23 +34,42 @@
                             <div class="dropdown-menu dropdown-menu-right" role="menu">
                                 <form class="form-horizontal" role="form">
                                     <div class="form-group">
-                                        <label for="filter">Filter by</label>
-                                        <select class="form-control">
-                                            <option value="0" selected>All Snippets</option>
-                                            <option value="1">Featured</option>
-                                            <option value="2">Most popular</option>
-                                            <option value="3">Top rated</option>
-                                            <option value="4">Most commented</option>
+                                        <label for="filter"> &nbsp; Genre &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                                        <select class="form-control" style="width:50%">
+                                            <option value="0" selected></option>
+                                            <option value="1">Comedy</option>
+                                            <option value="2">Romance</option>
+                                            <option value="3">Drama</option>
+                                            <option value="4">Action</option>
+                                            <option value="5">Horror</option>
+                                            <option value="6">SciFi</option>
+                                            <option value="7">Kids</option>
+                                            <option value="8">Family</option>
+                                            <option value="9">Biography</option>
+                                            <option value="10">Adult</option>
+                                            <option value="11">Thriller</option>
+                                            <option value="12">Advanture</option>
                                         </select>
                                     </div>
                                     <div class="form-group">
-                                        <label for="contain">Author</label>
-                                        <input class="form-control" type="text" />
+                                        <label for="filter"> &nbsp; Membership Type&nbsp; &nbsp;</label>
+                                        <select class="form-control" style="width:50%">
+                                            <option value="0" selected></option>
+                                            <option value="1">Free</option>
+                                            <option value="2">Premium</option>
+                                        </select>
                                     </div>
-                                    <div class="form-group">
-                                        <label for="contain">Contains the words</label>
-                                        <input class="form-control" type="text" />
+                                    <div class="input-group date" data-provide="datepicker">
+                                        <label for="filter"> &nbsp; Release Date &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;</label>
+                                        <input type="text" class="form-control" style="width:55%">
+                                        <div class="input-group-addon" style="width:20px">
+                                            <span class="glyphicon glyphicon-th"></span>
+                                        </div>
                                     </div>
+                                    <script type="text/javascript">
+
+                                    </script>
+
                                     <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
                                 </form>
                             </div>
@@ -51,7 +81,9 @@
         </div>
     </div>
 </div>
-<br />
+    
+<br/>
+ 
 <table class="table">
     <tr>
         <th>

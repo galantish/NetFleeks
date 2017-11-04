@@ -23,10 +23,26 @@ namespace NetFleeks.Controllers
             if (User.IsInRole("Manager"))
                 return View("Index",movies.ToList());
             else
-                return View("ReadOnlyIndex", movies.ToList());
-
-            
+                return View("ReadOnlyIndex", movies.ToList());  
         }
+        // GET: Movies
+        [HttpPost]
+        public ActionResult Search(FormCollection collection)
+        {
+            var genreID = collection["genreID"];
+            var membershipTypeID = collection["membershipTypeID"];
+            var date = collection["date"];
+
+            var movies = db.Movies.Include(null);
+            //var movies = db.Movies.Include(m => m.genre);
+            //return View(movies.ToList());
+
+            if (User.IsInRole("Manager"))
+                return View("Index", movies.ToList());
+            else
+                return View("ReadOnlyIndex", movies.ToList());
+        }
+
 
         // GET: Movies/Details/5
         public ActionResult Details(int? id)
@@ -121,6 +137,8 @@ namespace NetFleeks.Controllers
             }
             return View(movies);
         }
+
+        
 
         // POST: Movies/Delete/5
         [HttpPost, ActionName("Delete")]

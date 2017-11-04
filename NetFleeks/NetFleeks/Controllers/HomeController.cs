@@ -16,7 +16,14 @@ namespace NetFleeks.Controllers
 
         public ActionResult About()
         {
-            ViewBag.Message = "Your application description page.";
+            ViewBag.Message = "ABout Us";
+
+            return View();
+        }
+
+        public ActionResult Search()
+        {
+            ViewBag.Message = "Search Movie";
 
             return View();
         }

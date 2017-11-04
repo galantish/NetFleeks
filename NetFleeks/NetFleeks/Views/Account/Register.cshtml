@@ -11,24 +11,91 @@
     <h4>Create a new account.</h4>
     <hr />
     @Html.ValidationSummary("", new { @class = "text-danger" })
+
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.fName, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.fName, new { @class = "form-control" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.lName, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.lName, new { @class = "form-control" })
+        </div>
+    </div>
+    
     <div class="form-group">
         @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
         <div class="col-md-10">
             @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
         </div>
     </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.gender, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.gender, new { @class = "form-control" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.birth, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.birth, new { @class = "form-control" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.membershipTypeID, "Membership Type")
+        <div>
+            <select class="form-control" style="width:50%">
+                <option value="0" selected></option>
+                <option value="1"> Free</option>
+                <option value="2"> Premium</option>
+            </select>
+        </div>
+    </div>
+
     <div class="form-group">
         @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
         <div class="col-md-10">
             @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
         </div>
     </div>
+
     <div class="form-group">
         @Html.LabelFor(m => m.ConfirmPassword, new { @class = "col-md-2 control-label" })
         <div class="col-md-10">
             @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
         </div>
     </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.genreID, new { @class = "col-md-2 control-label" })
+        <div>
+            <select class="form-control" style="width:50%">
+                <option value="0" selected></option>
+                <option value="1">Comedy</option>
+                <option value="2">Romance</option>
+                <option value="3">Drama</option>
+                <option value="4">Action</option>
+                <option value="5">Horror</option>
+                <option value="6">SciFi</option>
+                <option value="7">Kids</option>
+                <option value="8">Family</option>
+                <option value="9">Biography</option>
+                <option value="10">Adult</option>
+                <option value="11">Thriller</option>
+                <option value="12">Advanture</option>
+            </select>
+        </div>
+    </div>
+
+
+
     <div class="form-group">
         <div class="col-md-offset-2 col-md-10">
             <input type="submit" class="btn btn-default" value="Register" />

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace NetFleeks.Models
@@ -6,7 +7,6 @@ namespace NetFleeks.Models
     public class ExternalLoginConfirmationViewModel
     {
         [Required]
-        [Display(Name = "Email")]
         public string Email { get; set; }
     }
 
@@ -64,6 +64,33 @@ namespace NetFleeks.Models
 
     public class RegisterViewModel
     {
+
+        [Required]
+        [Display(Name = "First Name")]
+        [StringLength(50)]
+        public string fName { get; set; }
+
+        [Required]
+        [Display(Name = "Last Name")]
+        [StringLength(50)]
+        public string lName { get; set; }
+
+        [Required]
+        [Display(Name = "Gender")]
+        public string gender { get; set; }
+
+        [Required]
+        [Display(Name = "Date of Birth")]
+        public DateTime birth { get; set; }
+
+        [Display(Name = "Membership Type ID")]
+        public int membershipTypeID { get; set; }
+
+        [Required]
+        [Display(Name = "Favorite Genre ID")]
+        public int genreID { get; set; }
+
+
         [Required]
         [EmailAddress]
         [Display(Name = "Email")]

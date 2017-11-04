@@ -152,13 +152,23 @@ namespace NetFleeks.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+                var user = new ApplicationUser
+                { UserName = model.Email,
+                    Email = model.Email,
+                    fName = model.fName,
+                    lName = model.lName,
+                    gender = model.gender,
+                    birth = model.birth,
+                    membershipTypeID = model.membershipTypeID,
+                    genreID = model.genreID
+                    
+                };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
 
                     //Temp Code - only use when register a manager
-                   /* var roleStore = new RoleStore<IdentityRole>(new ApplicationDbContext( ));
+                    /*var roleStore = new RoleStore<IdentityRole>(new ApplicationDbContext( ));
                     var roleManager = new RoleManager<IdentityRole>(roleStore);
                     await roleManager.CreateAsync(new IdentityRole("Manager"));
                     await UserManager.AddToRoleAsync(user.Id, "Manager");*/

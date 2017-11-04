@@ -21,13 +21,6 @@ namespace NetFleeks.Controllers
             return View();
         }
 
-        public ActionResult Search()
-        {
-            ViewBag.Message = "Search Movie";
-
-            return View();
-        }
-
         public ActionResult Contact()
         {
             ViewBag.Message = "Your contact page.";

@@ -9,20 +9,20 @@ namespace NetFleeks.Models
         public int ID { get; set; }
 
         [Display(Name = "Genre Name")]
-        public genreEnum genreName { get; set; }
+        public string genreName { get; set; }
 
-        public enum genreEnum 
-        { 
-            Comedy, 
-            Romance, 
-            Drama, 
-            Action, 
-            Horror,
-            SciFi,
-            Kids, 
-            Family,
-            Biography,
-            Adult 
-        } 
+        //public enum genreEnum 
+        //{ 
+        //    Comedy, 
+        //    Romance, 
+        //    Drama, 
+        //    Action, 
+        //    Horror,
+        //    SciFi,
+        //    Kids, 
+        //    Family,
+        //    Biography,
+        //    Adult 
+        //} 
     }
 }

@@ -26,13 +26,7 @@ namespace NetFleeks.Models
         public string lName { get; set; }
 
         [Display(Name = "Gender")]
-        public Gender gender { get; set; }
-
-        public enum Gender
-        {
-            Male,
-            Female
-        }
+        public string gender { get; set; }
 
         [Display(Name = "Membership Type")]
         public MembershipType membershipType { get; set; }

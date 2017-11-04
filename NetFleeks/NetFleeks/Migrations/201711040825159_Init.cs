@@ -12,7 +12,7 @@ namespace NetFleeks.Migrations
                 c => new
                     {
                         ID = c.Int(nullable: false, identity: true),
-                        genreName = c.Int(nullable: false),
+                        genreName = c.String(),
                     })
                 .PrimaryKey(t => t.ID);
             
@@ -65,7 +65,7 @@ namespace NetFleeks.Migrations
                         ID = c.Int(nullable: false, identity: true),
                         fName = c.String(nullable: false, maxLength: 50),
                         lName = c.String(nullable: false, maxLength: 50),
-                        gender = c.Int(nullable: false),
+                        gender = c.String(),
                         membershipTypeID = c.Int(nullable: false),
                         birth = c.DateTime(),
                         genreID = c.Int(nullable: false),

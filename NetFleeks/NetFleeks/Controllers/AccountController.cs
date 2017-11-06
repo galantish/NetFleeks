@@ -10,7 +10,7 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using NetFleeks.Models;
 using Microsoft.AspNet.Identity.EntityFramework;
-
+using CaptchaMvc.HtmlHelpers;
 namespace NetFleeks.Controllers
 {
     [Authorize]
@@ -143,49 +143,55 @@ namespace NetFleeks.Controllers
             return View();
         }
 
-        //
+        
         // POST: /Account/Register
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Register(RegisterViewModel model)
         {
-            if (ModelState.IsValid)
+            if (this.IsCaptchaValid("Captch is not valid, Try again"))
             {
-                var user = new ApplicationUser
-                { UserName = model.Email,
-                    Email = model.Email,
-                    fName = model.fName,
-                    lName = model.lName,
-                    gender = model.gender,
-                    birth = model.birth,
-                    membershipTypeID = model.membershipTypeID,
-                    genreID = model.genreID
-                    
-                };
-                var result = await UserManager.CreateAsync(user, model.Password);
-                if (result.Succeeded)
+
+                if (ModelState.IsValid)
                 {
 
-                    //Temp Code - only use when register a manager
-                    /*var roleStore = new RoleStore<IdentityRole>(new ApplicationDbContext( ));
-                    var roleManager = new RoleManager<IdentityRole>(roleStore);
-                    await roleManager.CreateAsync(new IdentityRole("Manager"));
-                    await UserManager.AddToRoleAsync(user.Id, "Manager");*/
 
-                    await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
-                    
-                    // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
-                    // Send an email with this link
-                    // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
-                    // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
-                    // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
+                    var user = new ApplicationUser
+                    {
+                        UserName = model.Email,
+                        Email = model.Email,
+                        fName = model.fName,
+                        lName = model.lName,
+                        gender = model.gender,
+                        birth = model.birth,
+                        membershipTypeID = model.membershipTypeID,
+                        genreID = model.genreID
 
-                    return RedirectToAction("Index", "Home");
+                    };
+                    var result = await UserManager.CreateAsync(user, model.Password);
+                    if (result.Succeeded)
+                    {
+
+                        //Temp Code - only use when register a manager
+                        /*var roleStore = new RoleStore<IdentityRole>(new ApplicationDbContext( ));
+                        var roleManager = new RoleManager<IdentityRole>(roleStore);
+                        await roleManager.CreateAsync(new IdentityRole("Manager"));
+                        await UserManager.AddToRoleAsync(user.Id, "Manager");*/
+
+                        await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
+
+                        // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
+                        // Send an email with this link
+                        // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
+                        // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
+                        // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
+
+                        return RedirectToAction("Index", "Home");
+                    }
+                    AddErrors(result);
                 }
-                AddErrors(result);
             }
-
             // If we got this far, something failed, redisplay form
             return View(model);
         }

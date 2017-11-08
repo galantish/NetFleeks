@@ -23,63 +23,55 @@
 </p>
 
 <div class="container">
-    <div class="row">
-        <div class="col-md-12">
-            <div class="input-group" id="adv-search">
-                <input type="text" class="form-control" placeholder="Search" />
-                <div class="input-group-btn">
-                    <div class="btn-group" role="group">
-                        <div class="dropdown dropdown-lg">
-                            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><span class="caret"></span></button>
-                            <div class="dropdown-menu dropdown-menu-right" role="menu">
-                                <form class="form-horizontal" role="form" method="post" action="~/Movies/Search">
-                                    <div class="form-group">
-                                        <label for="filter"> &nbsp; Genre &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-                                        <select class="form-control" style="width:50%" name="genreID">
-                                            <option value="0" selected></option>
-                                            <option value="1">Comedy</option>
-                                            <option value="2">Romance</option>
-                                            <option value="3">Drama</option>
-                                            <option value="4">Action</option>
-                                            <option value="5">Horror</option>
-                                            <option value="6">SciFi</option>
-                                            <option value="7">Kids</option>
-                                            <option value="8">Family</option>
-                                            <option value="9">Biography</option>
-                                            <option value="10">Adult</option>
-                                            <option value="11">Thriller</option>
-                                            <option value="12">Advanture</option>
-                                        </select>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="filter"> &nbsp; Membership Type&nbsp; &nbsp;</label>
-                                        <select class="form-control" style="width:50%" name="membershipTypeID">
-                                            <option value="0" selected></option>
-                                            <option value="1">Free</option>
-                                            <option value="2">Premium</option>
-                                        </select>
-                                    </div>
-                                    <div class="input-group date" data-provide="datepicker">
-                                        <label for="filter"> &nbsp; Release Date &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;</label>
-                                        <input type="text" class="form-control" style="width:55%" name="date">
-                                        <div class="input-group-addon" style="width:20px">
-                                            <span class="glyphicon glyphicon-th"></span>
-                                        </div>
-                                    </div>
-                                    <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
-                                </form>
-                            </div>
-                        </div>
-                        <button type="button" class="btn btn-primary"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
-                    </div>
+    @using (Html.BeginForm())
+    {
+        <p>
+            <div class="form-group">
+                @Html.Label("Genre:", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    <select class="form-control" style="width:50%" name="genreID">
+                        <option value="0" selected></option>
+                        <option value="1">Comedy</option>
+                        <option value="2">Romance</option>
+                        <option value="3">Drama</option>
+                        <option value="4">Action</option>
+                        <option value="5">Horror</option>
+                        <option value="6">SciFi</option>
+                        <option value="7">Kids</option>
+                        <option value="8">Family</option>
+                        <option value="9">Biography</option>
+                        <option value="10">Adult</option>
+                        <option value="11">Thriller</option>
+                        <option value="12">Advanture</option>
+                    </select>
+                </div>
+                @Html.Label("Membership Type:", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="form-group">
+                    <select class="form-control" style="width:50%" name="membershipTypeID">
+                        <option value="0" selected></option>
+                        <option value="1">Free</option>
+                        <option value="2">Premium</option>
+                    </select>
                 </div>
             </div>
-        </div>
-    </div>
+            @Html.Label("Release Date:", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="input-group date" data-provide="datepicker" id="date">
+                <input type="text" class="form-control" style="width:70%" name="date">
+                <div class="input-group-addon" style="width:20px">
+                    <span class="glyphicon glyphicon-th"></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Search" class="btn btn-primary" />
+                </div>
+            </div>
+        </p>
+    }
 </div>
-    
-<br/>
- 
+
+</br>
+
 <table class="table">
     <tr>
         <th>
@@ -103,32 +95,33 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.genre.ID)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.movieName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.dateAdded)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.releaseDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.actors)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.summary)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+            {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.genre.ID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.movieName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.dateAdded)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.releaseDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.actors)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.summary)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+                @Html.ActionLink("Details", "Details", new { id = item.ID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+            </td>
+        </tr>
+    }
 
 </table>

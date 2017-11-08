@@ -56,6 +56,7 @@ namespace NetFleeks.Migrations
                         dateAdded = c.DateTime(nullable: false),
                         releaseDate = c.DateTime(nullable: false),
                         actors = c.String(maxLength: 150),
+                        membershipType = c.Int(nullable: false),
                         summary = c.String(maxLength: 500),
                     })
                 .PrimaryKey(t => t.ID)

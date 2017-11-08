@@ -55,16 +55,16 @@ namespace NetFleeks.Controllers
             var movies = db.Movies.Include(m => m.genre);
             IEnumerable<Movies> query;
 
-            switch (queryParams)
-            {
-                case 1:
-                    query = movies.Where(m => m.membershipType == membershipCheck );
+            //switch (queryParams)
+            //{
+            //    case 1:
+            //        query = movies.Where(m => m.membershipType == membershipCheck );
 
-                default:
-                    query = movies;
-                    break;
+            //    default:
+            //        query = movies;
+            //        break;
 
-            }
+            //}
             //var movies = db.Movies.Include(m => m.genre);
             //return View(movies.ToList());
 

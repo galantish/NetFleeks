@@ -15,6 +15,7 @@ namespace NetFleeks.Migrations
                         genreName = c.String(),
                     })
                 .PrimaryKey(t => t.ID);
+
             Sql(@"SET IDENTITY_INSERT [dbo].[Genres] ON
             INSERT INTO [dbo].[Genres] ([ID], [genreName]) VALUES (1, N'Comedy')
             INSERT INTO [dbo].[Genres] ([ID], [genreName]) VALUES (2, N'Romance')
@@ -31,6 +32,7 @@ namespace NetFleeks.Migrations
             SET IDENTITY_INSERT [dbo].[Genres] OFF
             ");
 
+
             CreateTable(
                 "dbo.MembershipTypes",
                 c => new
@@ -41,6 +43,7 @@ namespace NetFleeks.Migrations
                         payment = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.ID);
+
             Sql(@"SET IDENTITY_INSERT [dbo].[MembershipTypes] ON
             INSERT INTO [dbo].[MembershipTypes] ([ID], [membershipType], [duration], [payment]) VALUES (1, N'Free', 99999, 0)
             INSERT INTO [dbo].[MembershipTypes] ([ID], [membershipType], [duration], [payment]) VALUES (2, N'Premium', 12, 10)
@@ -62,6 +65,7 @@ namespace NetFleeks.Migrations
                 .PrimaryKey(t => t.ID)
                 .ForeignKey("dbo.Genres", t => t.genreID, cascadeDelete: true)
                 .Index(t => t.genreID);
+
             Sql(@"SET IDENTITY_INSERT [dbo].[Movies] ON
             INSERT INTO [dbo].[Movies] ([ID], [movieName], [genreID], [dateAdded], [releaseDate], [actors], [membershipType], [summary]) VALUES (1, N'Forrest Gump', 3, N'2017-11-04 00:00:00', N'1994-09-30 00:00:00', N'Tom Hanks, Sally Field', 1, N'
             JFK, LBJ, Vietnam, Watergate, and other history unfold through the perspective of an Alabama man with an IQ of 75. ')
@@ -82,6 +86,7 @@ namespace NetFleeks.Migrations
                 c => new
                     {
                         ID = c.Int(nullable: false, identity: true),
+                        rentalUser = c.String(),
                         rentalExpiration = c.DateTime(nullable: false),
                         rentalMovie_ID = c.Int(),
                     })
@@ -98,6 +103,7 @@ namespace NetFleeks.Migrations
                     })
                 .PrimaryKey(t => t.Id)
                 .Index(t => t.Name, unique: true, name: "RoleNameIndex");
+
             Sql(@"INSERT INTO [dbo].[AspNetRoles] ([Id], [Name]) VALUES (N'cb3fc2b9-663f-4bb7-849e-cf086e5ae840', N'Manager')
             ");
 
@@ -113,10 +119,9 @@ namespace NetFleeks.Migrations
                 .ForeignKey("dbo.AspNetUsers", t => t.UserId, cascadeDelete: true)
                 .Index(t => t.UserId)
                 .Index(t => t.RoleId);
+
             Sql(@"INSERT INTO [dbo].[AspNetUserRoles] ([UserId], [RoleId]) VALUES (N'90de9e1c-8eae-4642-8918-a52c6fcff28d', N'cb3fc2b9-663f-4bb7-849e-cf086e5ae840')
             ");
-
-
 
             CreateTable(
                 "dbo.AspNetUsers",
@@ -143,6 +148,7 @@ namespace NetFleeks.Migrations
                     })
                 .PrimaryKey(t => t.Id)
                 .Index(t => t.UserName, unique: true, name: "UserNameIndex");
+
             Sql(@"INSERT INTO [dbo].[AspNetUsers] ([Id], [fName], [lName], [gender], [birth], [membershipTypeID], [genreID], [Email], [EmailConfirmed], [PasswordHash], [SecurityStamp], [PhoneNumber], [PhoneNumberConfirmed], [TwoFactorEnabled], [LockoutEndDateUtc], [LockoutEnabled], [AccessFailedCount], [UserName]) VALUES (N'002e0b7c-9b1f-4030-83d8-226bdccbcdc0', N'Loraine', N'Mcmaster', N'male', N'1993-07-06 00:00:00', 0, 0, N'LoraineMcmaster@netfleeks.com', 0, N'ADY9H1/ZgmtaYaq3EBQm3656pkhxBuJmZi0eEW5jz2xuQM8Gt/ycksVZQmGTP2rxkA==', N'280c037e-59d4-4365-92d3-58b411f55f08', NULL, 0, 0, NULL, 1, 0, N'LoraineMcmaster@netfleeks.com')
             INSERT INTO [dbo].[AspNetUsers] ([Id], [fName], [lName], [gender], [birth], [membershipTypeID], [genreID], [Email], [EmailConfirmed], [PasswordHash], [SecurityStamp], [PhoneNumber], [PhoneNumberConfirmed], [TwoFactorEnabled], [LockoutEndDateUtc], [LockoutEnabled], [AccessFailedCount], [UserName]) VALUES (N'0944aae4-927e-4f46-b271-bc23eb8b986f', N'Lettie', N'Levitt', N'female', N'1991-07-01 00:00:00', 0, 0, N'LettieLevitt@netfleeks.com', 0, N'AE0a52DCfvECf89l9ubEBmnKLy8JhCiuB4f5alNn9l4la3avo5Qeck0fARb02Oz4fQ==', N'fe2419ea-6706-49f3-b646-66bc50fd866c', NULL, 0, 0, NULL, 1, 0, N'LettieLevitt@netfleeks.com')
             INSERT INTO [dbo].[AspNetUsers] ([Id], [fName], [lName], [gender], [birth], [membershipTypeID], [genreID], [Email], [EmailConfirmed], [PasswordHash], [SecurityStamp], [PhoneNumber], [PhoneNumberConfirmed], [TwoFactorEnabled], [LockoutEndDateUtc], [LockoutEnabled], [AccessFailedCount], [UserName]) VALUES (N'0c636a49-3991-4caf-b6c9-9cd378361891', N'Modesto', N'Tanksley', N'Female', N'1980-01-01 00:00:00', 0, 0, N'ModestoTanksley@netfleeks.com', 0, N'AGbL1XuXCA9KLdhDG9yk6boLdBlM1PgxElLinGh3SdEcnQhrMS8rgJx7C6rLYcIRdQ==', N'672c3f76-8493-40e7-8679-2ee936e7c955', NULL, 0, 0, NULL, 1, 0, N'ModestoTanksley@netfleeks.com')

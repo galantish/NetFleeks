@@ -10,7 +10,7 @@ namespace NetFleeks.Models
         public int ID { get; set; }
 
         [Display(Name = "Renting User")]
-        public IPrincipal rentalUser { get; set; }
+        public string rentalUser { get; set; }
 
         [Display(Name = "Rented Movie")]
         public Movies rentalMovie { get; set; }

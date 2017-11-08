@@ -48,12 +48,12 @@ namespace NetFleeks.Controllers
                 if (genreCheck > 0)
                     queryParams += 2;
             }
-            if (DateTime.TryParse(date, out dateCheck){
+            if (DateTime.TryParse(date, out dateCheck)){
                 queryParams += 4;
             }
 
             var movies = db.Movies.Include(m => m.genre);
-            IEnumerable<Movies> query;
+            IEnumerable<Movies> query = movies;
 
             //switch (queryParams)
             //{

@@ -19,9 +19,9 @@
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
     <IISExpressSSLPort>44300</IISExpressSSLPort>
-    <IISExpressAnonymousAuthentication />
-    <IISExpressWindowsAuthentication />
-    <IISExpressUseClassicPipelineMode />
+    <IISExpressAnonymousAuthentication>enabled</IISExpressAnonymousAuthentication>
+    <IISExpressWindowsAuthentication>disabled</IISExpressWindowsAuthentication>
+    <IISExpressUseClassicPipelineMode>false</IISExpressUseClassicPipelineMode>
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
@@ -216,9 +216,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201711041641262_Init.cs" />
-    <Compile Include="Migrations\201711041641262_Init.Designer.cs">
-      <DependentUpon>201711041641262_Init.cs</DependentUpon>
+    <Compile Include="Migrations\201711081543456_Init.cs" />
+    <Compile Include="Migrations\201711081543456_Init.Designer.cs">
+      <DependentUpon>201711081543456_Init.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\201711081329342_201711041641262_Init.cs" />
     <Compile Include="Migrations\201711081329342_201711041641262_Init.Designer.cs">
@@ -332,8 +332,8 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201711041641262_Init.resx">
-      <DependentUpon>201711041641262_Init.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201711081543456_Init.resx">
+      <DependentUpon>201711081543456_Init.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201711081329342_201711041641262_Init.resx">
       <DependentUpon>201711081329342_201711041641262_Init.cs</DependentUpon>

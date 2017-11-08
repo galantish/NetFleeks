@@ -34,6 +34,9 @@ namespace NetFleeks.Models
         [Display(Name = "Actors")]
         [StringLength(150)]
         public string actors { get; set; }
+        
+        [Display(Name = "Membership Type")]
+        public int membershipType { get; set; }
 
         [Display(Name = "Summary")]
         [StringLength(500)]

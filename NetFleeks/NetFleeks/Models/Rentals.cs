@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 using System.Data.Entity;
+using System.Security.Principal;
 
 namespace NetFleeks.Models
 {
@@ -9,7 +10,7 @@ namespace NetFleeks.Models
         public int ID { get; set; }
 
         [Display(Name = "Renting User")]
-        public ApplicationUser rentalUser { get; set; }
+        public IPrincipal rentalUser { get; set; }
 
         [Display(Name = "Rented Movie")]
         public Movies rentalMovie { get; set; }

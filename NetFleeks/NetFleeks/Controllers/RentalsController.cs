@@ -17,7 +17,15 @@ namespace NetFleeks.Controllers
         // GET: Rentals
         public ActionResult Index()
         {
-            return View(db.Rentals.ToList());
+
+
+            
+            var userRentals = db.Rentals.Where(m => m.rentalUser == User.Identity);
+
+            return View(userRentals.ToList());
+
+            /*if (User.IsInRole("Manager"))
+                return View("Index", movies.ToList());*/
         }
 
         // GET: Rentals/Details/5

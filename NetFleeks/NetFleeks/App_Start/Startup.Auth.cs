@@ -54,9 +54,11 @@ namespace NetFleeks
             //   consumerKey: "",
             //   consumerSecret: "");
 
-            //app.UseFacebookAuthentication(
-            //   appId: "",
-            //   appSecret: "");
+            app.UseFacebookAuthentication
+               (
+               appId: "1845371499107938",
+               appSecret: "d4d9d15270d81e9aea7e7b5e3eaed8ce"
+               );
 
             //app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
             //{

@@ -18,17 +18,20 @@
 
 <h1>Movies</h1>
 
-<p>
+<p style="font-size:17px">
     @Html.ActionLink("Create New Movie", "Create")
 </p>
 
-<div class="container">
+<div class="container" style="width:1800px;">
     @using (Html.BeginForm("Search", "Movies"))
     {
         <p>
-            <div class="form-group" id="myForm">
+            <div class="control-label" col-md-2">
+                <span class="label label-primary" style="font-size:18px; margin-left: -1.2em;">Search a Movie</span>
+            </div>
+            <div class="form-group" id="myForm" style="font-size:17px; margin-left: -2em; margin-top:20px;">
                 @Html.Label("Genre:", htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
+                <div class="col-md-10" style="margin-bottom:-1em">
                     @{
                         var genres = new List<SelectListItem>();
                         genres.Add(new SelectListItem { Text = "", Value = "0" });
@@ -50,7 +53,7 @@
                 </div>
 
                 @Html.Label("Membership Type:", htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
+                <div class="col-md-10" style="margin-bottom:-1em">
                     @{
                         var types = new List<SelectListItem>();
                         types.Add(new SelectListItem { Text = "", Value = "0" });
@@ -62,22 +65,22 @@
                 </div>
 
                 @Html.Label("Date Release:", htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
+                <div class="col-md-10" style="margin-bottom:-1em">
                     <div class="input-group date" data-provide="datepicker">
                         <input type="text" class="form-control" style="width:240px;" name="date">
-                        <div class="input-group-addon" style="width:30px">
+                        <div class="input-group-addon" style="width:30px; margin-left: 8px">
                             <span class="glyphicon glyphicon-th"></span>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="form-group">
-                <div class="col-md-offset-2 col-md-6" style="margin-top:20px">
+                <div class="col-md-offset-2 col-md-6" style="margin-left:7em; margin-top:30px">
                     <button type="submit" class="btn btn-primary" style="width:100px"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
                 </div>
             </div>
         </p>
-     }
+                        }
 </div>
 
 

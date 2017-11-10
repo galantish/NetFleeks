@@ -52,9 +52,10 @@ audio:not([controls]) {
 }
 
 html {
-  font-family: sans-serif;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   -webkit-text-size-adjust: 100%;
       -ms-text-size-adjust: 100%;
+
 }
 
 body {
@@ -5427,7 +5428,7 @@ a.list-group-item:focus {
 }
 
 .panel-group .panel-heading + .panel-collapse .panel-body {
-  border-top: 1px solid #dddddd;
+  border-top: 1px solid white;
 }
 
 .panel-group .panel-footer {
@@ -5435,7 +5436,7 @@ a.list-group-item:focus {
 }
 
 .panel-group .panel-footer + .panel-collapse .panel-body {
-  border-bottom: 1px solid #dddddd;
+  border-bottom: 1px solid white;
 }
 
 .panel-default {

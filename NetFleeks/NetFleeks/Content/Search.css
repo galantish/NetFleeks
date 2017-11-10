@@ -1,7 +1,58 @@
-﻿
-.dropdown.dropdown-lg .dropdown-menu {
+﻿.body
+{
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+#details
+{
+    width: 100%;
+    text-align:left;
+    
+}
+
+#details 
+
+#movieTable
+{
+    border-collapse: collapse;
+    width: 100%;
+    text-align:center;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+#movieTable td, #movieTable th 
+{
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align:center;
+}
+
+#movieTable tr:nth-child(even)
+{
+    background-color: #f2f2f2;
+    text-align: center;
+}
+
+#movieTable tr:hover 
+{
+    background-color: #ddd;
+    text-align: center;
+}
+
+#movieTable th 
+{
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: center;
+    background-color: #1679c1;
+    color: white;
+}
+
+.dropdown.dropdown-lg .dropdown-menu 
+{
     margin-top: -1px;
     padding: 6px 6px;
+    text-align: center;
+
 }
 
 .input-group-btn .btn-group {

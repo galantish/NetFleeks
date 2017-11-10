@@ -27,12 +27,8 @@ namespace NetFleeks.Controllers
         }
         // GET: Movies
         [HttpPost]
-        public ActionResult Search(FormCollection collection)
+        public ActionResult Search(string genreID, string membershipTypeID, string date)
         {
-            var membershipTypeID = collection["membershipTypeID"];
-            var date = collection["date"];
-            var genreID = collection["genreID"];
-
             int queryParams = 0;
             int membershipCheck;
             int genreCheck;

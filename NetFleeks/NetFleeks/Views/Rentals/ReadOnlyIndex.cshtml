@@ -10,26 +10,20 @@
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css" />
 
-<link rel="stylesheet" href="~/Content/bootstrap.css" />
+<link rel="stylesheet" href="~/Content/Search.css" />
 
 @{
     ViewBag.Title = "Rentals";
 }
 
-<h2>Rentals</h2>
-
-<p style="font-size:17px">
+<h2 style="font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-weight:bold;">Rentals</h2>
+<br />
+<p style="font-size:17px; font-weight: bold; font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif">
    @Html.ActionLink("Rent a New Movie", "Index", "Movies")&nbsp &nbsp &nbsp &nbsp
-    @Html.ActionLink("All time Rentals", "IndexAll")&nbsp &nbsp &nbsp &nbsp
-    @Html.ActionLink("Current Rentals", "Index")
+   @Html.ActionLink("All time Rentals", "IndexAll")&nbsp &nbsp &nbsp &nbsp
+   @Html.ActionLink("Current Rentals", "Index")
 
 </p>
-
-
-
-<div class="container">
-    
-</div>
 
 </br>
 
@@ -37,28 +31,29 @@
 {
     <p>You Have Not Rented a Movie Yet.</p>
 }
-else { 
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.rentalMovie)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.rentalExpiration)
-        </th>
-    </tr>
+else
+{
+    <table class="table" id="rentalsTable">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.rentalMovie)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.rentalExpiration)
+            </th>
+        </tr>
 
-    @foreach (var item in Model)
-    {
-    <tr>
-        <td> 
-            @Html.DisplayFor(modelItem => item.rentalMovie)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.rentalExpiration)
-        </td>
-    </tr>
-    }
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td> 
+                    @Html.DisplayFor(modelItem => item.rentalMovie)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.rentalExpiration)
+                </td>
+            </tr>
+        }
    
-</table>
+    </table>
 }

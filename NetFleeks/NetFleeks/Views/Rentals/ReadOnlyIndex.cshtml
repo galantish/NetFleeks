@@ -6,11 +6,7 @@
 <!-- Isolated Version of Bootstrap, not needed if your site already uses Bootstrap -->
 <link rel="stylesheet" href="https://formden.com/static/cdn/bootstrap-iso.css" />
 
-<!-- Bootstrap Date-Picker Plugin -->
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css" />
-
-<link rel="stylesheet" href="~/Content/Search.css" />
+<link rel="stylesheet" href="~/Content/Rental.css" />
 
 @{
     ViewBag.Title = "Rentals";
@@ -18,18 +14,18 @@
 
 <h2 id="pageTitle">Rentals</h2>
 <br />
-<p style="font-size:17px; font-weight: bold; font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif">
-   @Html.ActionLink("Rent a New Movie", "Index", "Movies")&nbsp &nbsp &nbsp &nbsp
-   @Html.ActionLink("All time Rentals", "IndexAll")&nbsp &nbsp &nbsp &nbsp
-   @Html.ActionLink("Current Rentals", "Index")
 
+<p style="font-size:20px; color:#1679c1; font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif"">
+    &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp;
+    @Html.ActionLink("Rent a New Movie", "Index", "Movies") &nbsp | &nbsp
+    @Html.ActionLink("All time Rentals", "IndexAll") &nbsp | &nbsp
+    @Html.ActionLink("Current Rentals", "Index") &nbsp
 </p>
 
-</br>
 
 @if (!Model.Any())
 {
-    <p>You Have Not Rented a Movie Yet.</p>
+    <label id="error">You Have Not Rented a Movie Yet</label>
 }
 else
 {

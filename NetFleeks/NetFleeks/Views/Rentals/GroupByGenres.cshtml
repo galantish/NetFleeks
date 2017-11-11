@@ -23,29 +23,31 @@
     &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp;
     @Html.ActionLink("All times Rentals", "IndexAll") &nbsp | &nbsp
     @Html.ActionLink("Current Rentals", "Index") &nbsp | &nbsp
-    @Html.ActionLink("Group By Users", "GroupBy1") &nbsp | &nbsp 
+    @Html.ActionLink("Group By Users", "GroupBy1") &nbsp | &nbsp
     @Html.ActionLink("Group By Genres", "GroupBy2")&nbsp
 </p>
 
 @foreach (var genre in Model.GroupBy(g => g.genre))
 {
-    <label id="userLabel">@Html.DisplayFor(modelItem => genre.Key)</label>
-    <table class="table table-hover table-bordered" id="rentalsTable">
-        <thead>
-            <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.movie)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.rentalUser)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.rentalExpiration)
-                </th>
-            </tr>
-        </thead>
-        @foreach (var item in genre)
-        {
+    <button class="accordion">@Html.DisplayFor(modelItem => genre.Key)</button>
+
+    <div class="panel">
+        <table class="table table-hover table-bordered" id="rentalsTable">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.movie)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.rentalUser)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.rentalExpiration)
+                    </th>
+                </tr>
+            </thead>
+            @foreach (var item in genre)
+            {
             <tr>
                 <td>
                     @Html.DisplayFor(modelItem => item.movie)
@@ -57,9 +59,32 @@
                     @Html.DisplayFor(modelItem => item.rentalExpiration)
                 </td>
             </tr>
-        }
+            }
 
-    </table>
+        </table>
+    </div>
 }
+
+<script>
+    var acc = document.getElementsByClassName("accordion");
+    var i;
+
+    for (i = 0; i < acc.length; i++)
+    {
+        acc[i].onclick = function(){
+            this.classList.toggle("active");
+            var panel = this.nextElementSibling;
+            if (panel.style.display === "block")
+            {
+                panel.style.display = "none";
+
+            }
+            else
+            {
+                panel.style.display = "block";
+            }
+        }
+    }
+</script>
 
 

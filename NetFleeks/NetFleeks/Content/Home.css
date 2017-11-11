@@ -19,7 +19,7 @@
     margin: 0;
     padding: .5em 0 .25em 0;
     font-weight: 700;
-    font-size: 1.75em;
+    font-size: 1.5em;
     text-transform: uppercase;
     color: #003334;
 }
@@ -73,14 +73,14 @@
     margin-top: 2em;
     outline: none;
     font-weight:bold;
+    font-size: 14px;
 }
 
 .genre-clickr:hover {
-    color: red;
-    background-color: #ffffff;
-    border: 2px solid red;
+    color: white;
+    background-color: #428BCA;
+    border: 2px solid white;
     font-weight:bold;
-
 }
 
 .genre-clickr:active {
@@ -117,3 +117,49 @@
     width: 100%;
 }
 
+#learningBtn
+ {
+    background-color:#333333;
+    color: white;
+    border: 2px solid white;
+    padding: 1em 2em 1em 2em;
+    border-radius: 1.75em;
+    text-align: center;
+    display: block;
+    width: 500px;
+    margin: auto auto;
+    outline: none;
+    font-weight:bold;
+    font-size: 14px;
+}
+
+#learningBtn:hover 
+{
+    color: white;
+    background-color: #428BCA;
+    border: 2px solid white;
+    font-weight:bold;
+}
+
+#learningBtn:active
+{ 
+    background: rgba(0, 0, 0, 0.1);
+    outline: none;
+}
+
+#machineLearning
+{
+    display:none;
+    background-color:#a1a1a1;
+    color: white;
+    border: 2px solid white;
+    padding: 1em 2em 1em 2em;
+    border-radius: 1.75em;
+    text-align: center;
+    width: 70%;
+    outline: none;
+    font-weight:bold;
+    font-size: 15px;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin-left: 10em;
+}

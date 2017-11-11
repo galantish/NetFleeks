@@ -335,6 +335,7 @@
     <Content Include="Views\Cinemas\Details.cshtml" />
     <Content Include="Views\Cinemas\Edit.cshtml" />
     <Content Include="Views\Cinemas\Index.cshtml" />
+    <Content Include="Views\Cinemas\ManageCinemas.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -19,8 +19,13 @@
 <h2>Rentals</h2>
 
 <p style="font-size:17px">
-    @Html.ActionLink("Rent New Movie", "Create")
+   @Html.ActionLink("Rent a New Movie", "Index", "Movies")&nbsp &nbsp &nbsp &nbsp
+    @Html.ActionLink("All time Rentals", "IndexAll")&nbsp &nbsp &nbsp &nbsp
+    @Html.ActionLink("Current Rentals", "Index")
+
 </p>
+
+
 
 <div class="container">
     
@@ -45,14 +50,14 @@ else {
 
     @foreach (var item in Model)
     {
-        <tr>
-            <td> 
-                @Html.DisplayFor(modelItem => item.rentalMovie)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.rentalExpiration)
-            </td>
-        </tr>
+    <tr>
+        <td> 
+            @Html.DisplayFor(modelItem => item.rentalMovie)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.rentalExpiration)
+        </td>
+    </tr>
     }
    
 </table>

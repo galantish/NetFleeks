@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using NetFleeks.Models;
 using System.Data.Entity;
+using System.Collections;
 
 namespace NetFleeks.Controllers
 {
@@ -25,23 +26,51 @@ namespace NetFleeks.Controllers
             }
             else
             {
-                IEnumerable<Rentals> userRentals = rentals.Where(m => m.rentalUser == user);
+                IEnumerable<Rentals> userRentals = rentals.Where(m => m.rentalUser == user && m.rentalExpiration >= DateTime.Today);
                 return View("ReadOnlyIndex", userRentals.ToList());
             }
         }
+        public ActionResult IndexAll()
+        {
+            var user = User.Identity.Name;
+            var rentals = db.Rentals;
+            IEnumerable<Rentals> userAllRentals = rentals.Where(m => m.rentalUser == user);
+            return View("ReadOnlyIndex", userAllRentals.ToList());
+            
+        }
+
 
         public ActionResult Rent(string movie)
         {
-            var rental = new Rentals
-            {
-                rentalUser = User.Identity.Name,
-                rentalExpiration = DateTime.Today.AddDays(3),
-                rentalMovie = movie
-            };
+            var user = User.Identity.Name;
+            var rentals = db.Rentals;
+            IEnumerable<Rentals> userRentals = rentals.Where(m => m.rentalUser == user);
+            var dupCheck = false;
 
-            db.Rentals.Add(rental);
-            db.SaveChanges();
-            return RedirectToAction("Index");
+            foreach(Rentals rental in userRentals)
+            {
+                if (rental.rentalMovie == movie)
+                    dupCheck = true;               
+            }
+            if (dupCheck)
+            {
+             return RedirectToAction("Index");
+
+            }
+
+            else
+            {
+                var rental = new Rentals
+                {
+                    rentalUser = User.Identity.Name,
+                    rentalExpiration = DateTime.Today.AddDays(3),
+                    rentalMovie = movie
+                };
+
+                db.Rentals.Add(rental);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
         }
     }
 }

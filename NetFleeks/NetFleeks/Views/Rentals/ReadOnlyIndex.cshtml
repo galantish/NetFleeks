@@ -18,6 +18,10 @@
 
 <h2>Rentals</h2>
 
+<p style="font-size:17px">
+    @Html.ActionLink("Rent New Movie", "Create")
+</p>
+
 <div class="container">
     
 </div>
@@ -29,8 +33,6 @@
         <th>
             @Html.DisplayNameFor(model => model.rentalMovie)
         </th>
-
-        <th>@Html.DisplayNameFor(model => model.rentalUser)</th>
         <th>
             @Html.DisplayNameFor(model => model.rentalExpiration)
         </th>
@@ -42,7 +44,6 @@
             <td> 
                 @Html.DisplayFor(modelItem => item.rentalMovie)
             </td>
-            <td>@Html.DisplayFor(modelItem => item.rentalUser)</td>
             <td>
                 @Html.DisplayFor(modelItem => item.rentalExpiration)
             </td>

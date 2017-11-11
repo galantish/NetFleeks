@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using NetFleeks.Models;
+using System.Data.Entity;
 
 namespace NetFleeks.Controllers
 {
@@ -14,7 +15,16 @@ namespace NetFleeks.Controllers
         // GET: Rentals
         public ActionResult Index()
         {
-            return View();
+            var user = User.Identity.Name;
+            var rentals = db.Rentals.Include(m => m.rentalMovie);
+
+            if (User.IsInRole("Manager"))
+                return View("Index", rentals.ToList());
+            else
+            {
+                IEnumerable<Rentals> userRentals = rentals.Where(m => m.rentalUser == user);
+                return View("ReadOnlyIndex", userRentals.ToList());
+            }
         }
 
         public ActionResult Rent(Movies movie)
@@ -23,7 +33,7 @@ namespace NetFleeks.Controllers
             {
                 rentalUser = User.Identity.Name,
                 rentalExpiration = DateTime.Today.AddDays(3),
-                rentalMovie = movie
+                rentalMovie = movie.movieName
             };
 
             db.Rentals.Add(rental);

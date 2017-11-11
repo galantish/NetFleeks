@@ -1,4 +1,4 @@
-﻿@model IEnumerable<NetFleeks.Models.Movies>
+﻿@model IEnumerable<NetFleeks.ViewModel.InfoMovieViewModel>
 
 <!--  jQuery -->
 <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
@@ -84,14 +84,14 @@
 </div>
 
 
-<table class="table" id="movieTable">
+<table class="table" id="movieTable" >
     <br />
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.genre.ID)
+            @Html.DisplayNameFor(model => model.genre)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.movieName)
+            @Html.DisplayNameFor(model => model.movie)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.dateAdded)
@@ -115,10 +115,10 @@
             {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.genre.ID)
+                @Html.DisplayFor(modelItem => item.genre)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.movieName)
+                @Html.DisplayFor(modelItem => item.movie)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.dateAdded)

@@ -240,6 +240,7 @@
     <Compile Include="Startup.cs" />
     <Compile Include="Models\Genres.cs" />
     <Compile Include="Models\Rentals.cs" />
+    <Compile Include="ViewModel\InfoMovieViewModel.cs" />
     <Compile Include="ViewModel\RentalViewModel.cs" />
   </ItemGroup>
   <ItemGroup>

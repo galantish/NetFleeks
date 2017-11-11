@@ -189,6 +189,13 @@ namespace NetFleeks.Migrations
             INSERT INTO [dbo].[Rentals] ([ID], [rentalUser], [rentalMovie], [rentalExpiration]) VALUES (129, N'KevinLeedy@netfleeks.com', N'The Hangover', N'2015-01-08 00:00:00')
             INSERT INTO [dbo].[Rentals] ([ID], [rentalUser], [rentalMovie], [rentalExpiration]) VALUES (130, N'MonserrateFabela@netfleeks.com', N'Scream', N'2015-10-10 00:00:00')
             INSERT INTO [dbo].[Rentals] ([ID], [rentalUser], [rentalMovie], [rentalExpiration]) VALUES (131, N'MonserrateFabela@netfleeks.com', N'Scream', N'2015-10-10 00:00:00')
+            INSERT INTO [dbo].[Rentals] ([ID], [rentalUser], [rentalMovie], [rentalExpiration]) VALUES (133, N'guest@netfleeks.com', N'Forrest Gump', N'2017-11-14 00:00:00')
+            INSERT INTO [dbo].[Rentals] ([ID], [rentalUser], [rentalMovie], [rentalExpiration]) VALUES (134, N'guest@netfleeks.com', N'The Notebook', N'2016-11-14 00:00:00')
+            INSERT INTO [dbo].[Rentals] ([ID], [rentalUser], [rentalMovie], [rentalExpiration]) VALUES (135, N'guest@netfleeks.com', N'Frozen', N'2016-11-14 00:00:00')
+            INSERT INTO [dbo].[Rentals] ([ID], [rentalUser], [rentalMovie], [rentalExpiration]) VALUES (136, N'guest@netfleeks.com', N'The Hangover', N'2017-11-20 00:00:00')
+            INSERT INTO [dbo].[Rentals] ([ID], [rentalUser], [rentalMovie], [rentalExpiration]) VALUES (137, N'guest@netfleeks.com', N'The Wolf of Wall Street', N'2017-11-28 00:00:00')
+            INSERT INTO [dbo].[Rentals] ([ID], [rentalUser], [rentalMovie], [rentalExpiration]) VALUES (138, N'guest@netfleeks.com', N'Harry Potter and the Sorcerer''s Stone', N'2017-11-14 00:00:00')
+            INSERT INTO [dbo].[Rentals] ([ID], [rentalUser], [rentalMovie], [rentalExpiration]) VALUES (139, N'guest@netfleeks.com', N'Inception', N'2017-11-10 00:00:00')
             SET IDENTITY_INSERT [dbo].[Rentals] OFF
             ");
             CreateTable(

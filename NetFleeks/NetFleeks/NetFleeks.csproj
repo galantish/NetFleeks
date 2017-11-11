@@ -209,6 +209,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\CinemasController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\MoviesController.cs" />
@@ -216,12 +217,13 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201711081647090_Init.cs" />
-    <Compile Include="Migrations\201711081647090_Init.Designer.cs">
-      <DependentUpon>201711081647090_Init.cs</DependentUpon>
+    <Compile Include="Migrations\201711110915494_Init.cs" />
+    <Compile Include="Migrations\201711110915494_Init.Designer.cs">
+      <DependentUpon>201711110915494_Init.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Cinemas.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\MembershipType.cs" />
@@ -326,6 +328,13 @@
     <Content Include="Views\Home\AdminIndex.cshtml" />
     <Content Include="Views\Movies\ReadOnlyIndex.cshtml" />
     <Content Include="Views\Rentals\Index.cshtml" />
+    <Content Include="Views\Rentals\ReadOnlyIndex.cshtml" />
+    <Content Include="Views\Rentals\Rent.cshtml" />
+    <Content Include="Views\Cinemas\Create.cshtml" />
+    <Content Include="Views\Cinemas\Delete.cshtml" />
+    <Content Include="Views\Cinemas\Details.cshtml" />
+    <Content Include="Views\Cinemas\Edit.cshtml" />
+    <Content Include="Views\Cinemas\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -339,8 +348,8 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201711081647090_Init.resx">
-      <DependentUpon>201711081647090_Init.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201711110915494_Init.resx">
+      <DependentUpon>201711110915494_Init.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -2,20 +2,72 @@
     ViewBag.Title = "About";
 }
 
-<h2 style="font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-weight:bold;">About Us</h2>
+<h2 style="font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-weight:bold;">
+    About 
+    <img src="~/Content/logo.png" width="16%">
 
-
-<h3 style="font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
-    And all this time, i was alone.. all this time!! <br/>
-    oh oh oh <br/>
-    Every day anew
-</h3>
+</h2>
 
 <div>
-    <img src="~/Content/shaglanti.png" width="15%" />
-    <img src="~/Content/haviv.png" width="15%" />
-    <img src="~/Content/genish.png" width="15%"/>
+    <img id="shaglanti" src="~/Content/shaglanti.png" alt="The Scream" width="0%">
+    <img id="haviv" src="~/Content/haviv.png" width="0%">
+    <img id="genish" src="~/Content/genish.png" width="0%">
+</div>
+
+<div class="row">
+    <div class="col-md-3">
+        <button class="btn btn-danger" style="font-size:15px" onclick="printShir()">How Shir Galanti Looks Like?</button>
+        <hr />
+        <canvas id="shaglantiCanvas" width="311" height="547" style="width:80%">
+            Your browser does not support the HTML5 canvas tag :/
+        </canvas>
+    </div>
+    <div class="col-md-3">
+        <button class="btn btn-primary" style="font-size:15px" onclick="printHaviv()">How Adi Haviv Looks Like?</button>
+        <hr />
+        <canvas id="havivCanvas" width="311" height="547" style="width:80%">
+            Your browser does not support the HTML5 canvas tag :/
+        </canvas>
+    </div>
+    <div class="col-md-3">
+        <button class="btn btn-warning" style="font-size:15px;" onclick="printGenish()">How Bar Genish Looks Like?</button>
+        <hr />
+        <canvas id="genishCanvas" width="311" height="547" style="width:80%">
+            Your browser does not support the HTML5 canvas tag :/
+        </canvas>
+    </div>
+
+    <div class="col-md-3">
+        <h3></h3>
+
+    </div>
 </div>
 
 
+<script>
+    function printShir() {
+        var c = document.getElementById("shaglantiCanvas");
+        var ctx = c.getContext("2d");
+        var img = document.getElementById("shaglanti");
+        ctx.drawImage(shaglanti, 10, 10);
+    }
 
+</script>
+
+<script>
+    function printHaviv() {
+        var c = document.getElementById("havivCanvas");
+        var ctx = c.getContext("2d");
+        var img = document.getElementById("haviv");
+        ctx.drawImage(haviv, 10, 10);
+    }
+</script>
+
+<script>
+    function printGenish() {
+        var c = document.getElementById("genishCanvas");
+        var ctx = c.getContext("2d");
+        var img = document.getElementById("genish");
+        ctx.drawImage(genish, 10, 10);
+    }
+</script>

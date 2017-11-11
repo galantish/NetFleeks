@@ -261,6 +261,7 @@
     <Content Include="Content\netfleeks1.png" />
     <Content Include="Content\netfleeks2.png" />
     <Content Include="Content\scream.jpg" />
+    <Content Include="Content\Rental.css" />
     <Content Include="Content\Search.css" />
     <Content Include="Content\shaglanti.png" />
     <Content Include="Content\the_notebook.jpg" />

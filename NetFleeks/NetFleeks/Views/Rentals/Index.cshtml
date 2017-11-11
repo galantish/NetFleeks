@@ -11,60 +11,56 @@
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css" />
 
-<link rel="stylesheet" href="~/Content/bootstrap.css" />
+<link rel="stylesheet" href="~/Content/Rental.css" />
 
 @{
     ViewBag.Title = "Rentals";
 }
 
-<h2>Rentals</h2>
+<h2 id="pageTitle">Rentals</h2>
 
-<p style="font-size:17px">
-    @Html.ActionLink("All times Rentals", "IndexAll")&nbsp &nbsp &nbsp &nbsp
-    @Html.ActionLink("Current Rentals", "Index")&nbsp &nbsp &nbsp &nbsp
-    @Html.ActionLink("Group By Users", "GroupBy1")&nbsp &nbsp &nbsp &nbsp
-    @Html.ActionLink("Group By Genres", "GroupBy2")&nbsp &nbsp &nbsp &nbsp
-
-
+<p style="font-size:20px; color:#1679c1;">
+    &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp;
+    @Html.ActionLink("All times Rentals", "IndexAll") &nbsp | &nbsp
+    @Html.ActionLink("Current Rentals", "Index") &nbsp &nbsp | &nbsp
+    @Html.ActionLink("Group By Users", "GroupBy1") &nbsp | &nbsp
+    @Html.ActionLink("Group By Genres", "GroupBy2")&nbsp
 </p>
 
-<div class="container">
+<table class="table" id="rentalsTable">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.movie)
+        </th>
 
-    <table class="table">
+        <th>
+            @Html.DisplayNameFor(model => model.rentalUser)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.rentalExpiration)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.genre)
+        </th>
+
+    </tr>
+
+    @foreach (var item in Model)
+    {
         <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.movie)
-            </th>
-
-            <th>
-                @Html.DisplayNameFor(model => model.rentalUser)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.rentalExpiration)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.genre)
-            </th>
-
+            <td>
+                @Html.DisplayFor(modelItem => item.movie)
+            </td>
+            <td>@Html.DisplayFor(modelItem => item.rentalUser)</td>
+            <td>
+                @Html.DisplayFor(modelItem => item.rentalExpiration)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.genre)
+            </td>
         </tr>
+    }
 
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.movie)
-                </td>
-                <td>@Html.DisplayFor(modelItem => item.rentalUser)</td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.rentalExpiration)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.genre)
-                </td>
-            </tr>
-        }
-
-    </table>
+</table>
 
 
-</div>

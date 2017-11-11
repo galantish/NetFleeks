@@ -6816,3 +6816,35 @@ td.visible-print {
   }
 }
 
+#loginType
+{
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    border-radius: 10px;
+    font-weight: bold;
+    background-color:#a1a1a1;
+    color: white;
+    width: 380px;
+    height: 35px;
+    text-align:center;
+    padding-top:5px;
+}
+
+#pageTitle
+{
+     text-shadow: 2px 2px #428bca;
+     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+     font-weight: bold;
+     font-size: 50px;
+}
+
+@font-face {
+    font-family: myFirstFont;
+    src: url(sansation_light.woff);
+}
+
+#about
+{
+    -webkit-column-count: 3; /* Chrome, Safari, Opera */
+    -moz-column-count: 3; /* Firefox */
+
+}

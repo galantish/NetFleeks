@@ -18,81 +18,68 @@
 
 
 
-<h2 style="font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-weight:bold;">Movies</h2>
+<h2 id="pageTitle">Movies</h2>
 
-<div class="row">
-    <div class="col-md-6">
-        <div class="container" style="width:1100px;">
-            @using (Html.BeginForm("Search", "Movies"))
-            {
-                <p>
-                    <div class="control-label" col-md-2">
-                        <span class="label label-primary" style="font-size:18px; margin-left: -1.2em;">Search a Movie</span>
-                    </div>
-                    <div class="form-group" id="myForm" style="font-size:17px; margin-left: -2em; margin-top:20px;">
-                        @Html.Label("Genre:", htmlAttributes: new { @class = "control-label col-md-2" })
-                        <div class="col-md-10" style="margin-bottom:-1em">
-                            @{
-                                var genres = new List<SelectListItem>();
-                                genres.Add(new SelectListItem { Text = "", Value = "0" });
-                                genres.Add(new SelectListItem { Text = "Comedy", Value = "1" });
-                                genres.Add(new SelectListItem { Text = "Romance", Value = "2" });
-                                genres.Add(new SelectListItem { Text = "Drama", Value = "3" });
-                                genres.Add(new SelectListItem { Text = "Action", Value = "4" });
-                                genres.Add(new SelectListItem { Text = "Horror", Value = "5" });
-                                genres.Add(new SelectListItem { Text = "SciFi", Value = "6" });
-                                genres.Add(new SelectListItem { Text = "Kids", Value = "7" });
-                                genres.Add(new SelectListItem { Text = "Family", Value = "8" });
-                                genres.Add(new SelectListItem { Text = "Biography", Value = "9" });
-                                genres.Add(new SelectListItem { Text = "Adult", Value = "10" });
-                                genres.Add(new SelectListItem { Text = "Thriller", Value = "11" });
-                                genres.Add(new SelectListItem { Text = "Adventure", Value = "12" });
-                            }
 
-                            @Html.DropDownList("genreID", genres, htmlAttributes: new { @class = "form-control" }) <br />
-                        </div>
+<div class="container" style="width:1800px;">
+    @using (Html.BeginForm("Search", "Movies"))
+    {
+        <p>
+            <div class="control-label" col-md-2">
+                <span class="label label-primary" style="font-size:18px; margin-left: -1.2em;">Search a Movie</span>
+            </div>
+            <div class="form-group" id="myForm" style="font-size:17px; margin-left: -2em; margin-top:20px;">
+                @Html.Label("Genre:", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10" style="margin-bottom:-1em">
+                    @{
+                        var genres = new List<SelectListItem>();
+                        genres.Add(new SelectListItem { Text = "", Value = "0" });
+                        genres.Add(new SelectListItem { Text = "Comedy", Value = "1" });
+                        genres.Add(new SelectListItem { Text = "Romance", Value = "2" });
+                        genres.Add(new SelectListItem { Text = "Drama", Value = "3" });
+                        genres.Add(new SelectListItem { Text = "Action", Value = "4" });
+                        genres.Add(new SelectListItem { Text = "Horror", Value = "5" });
+                        genres.Add(new SelectListItem { Text = "SciFi", Value = "6" });
+                        genres.Add(new SelectListItem { Text = "Kids", Value = "7" });
+                        genres.Add(new SelectListItem { Text = "Family", Value = "8" });
+                        genres.Add(new SelectListItem { Text = "Biography", Value = "9" });
+                        genres.Add(new SelectListItem { Text = "Adult", Value = "10" });
+                        genres.Add(new SelectListItem { Text = "Thriller", Value = "11" });
+                        genres.Add(new SelectListItem { Text = "Adventure", Value = "12" });
+                    }
 
-                        @Html.Label("Membership Type:", htmlAttributes: new { @class = "control-label col-md-2" })
-                        <div class="col-md-10" style="margin-bottom:-1em">
-                            @{
-                                var types = new List<SelectListItem>();
-                                types.Add(new SelectListItem { Text = "", Value = "0" });
-                                types.Add(new SelectListItem { Text = "Free", Value = "1" });
-                                types.Add(new SelectListItem { Text = "Premium", Value = "2" });
-                            }
+                    @Html.DropDownList("genreID", genres, htmlAttributes: new { @class = "form-control" }) <br />
+                </div>
 
-                            @Html.DropDownList("membershipTypeID", types, htmlAttributes: new { @class = "form-control" }) <br />
-                        </div>
+                @Html.Label("Membership Type:", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10" style="margin-bottom:-1em">
+                    @{
+                        var types = new List<SelectListItem>();
+                        types.Add(new SelectListItem { Text = "", Value = "0" });
+                        types.Add(new SelectListItem { Text = "Free", Value = "1" });
+                        types.Add(new SelectListItem { Text = "Premium", Value = "2" });
+                    }
 
-                        @Html.Label("Date Release:", htmlAttributes: new { @class = "control-label col-md-2" })
-                        <div class="col-md-10" style="margin-bottom:-1em">
-                            <div class="input-group date" data-provide="datepicker">
-                                <input type="text" class="form-control" style="width:240px;" name="date">
-                                <div class="input-group-addon" style="width:30px; margin-left: 8px">
-                                    <span class="glyphicon glyphicon-th"></span>
-                                </div>
-                            </div>
+                    @Html.DropDownList("membershipTypeID", types, htmlAttributes: new { @class = "form-control" }) <br />
+                </div>
+
+                @Html.Label("Date Release:", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10" style="margin-bottom:-1em">
+                    <div class="input-group date" data-provide="datepicker">
+                        <input type="text" class="form-control" style="width:240px;" name="date">
+                        <div class="input-group-addon" style="width:30px; margin-left: 8px">
+                            <span class="glyphicon glyphicon-th"></span>
                         </div>
                     </div>
-                    <div class="form-group">
-                        <div class="col-md-offset-2 col-md-6" style="margin-left:7em; margin-top:30px">
-                            <button type="submit" class="btn btn-primary" style="width:100px"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
-                        </div>
-                    </div>
-                </p>
-            }
-        </div>
-    </div>
-    <div class="col-md-12" style="margin-top:1em">
-        <div class="control-label" col-md-2">
-            <span class="label label-primary" style="font-size:18px; margin-left: -1.2em;">Trailer of The Week</span>
-            <video width="400" controls>
-                <source src="mov_bbb.mp4" type="video/mp4">
-                <source src="mov_bbb.ogg" type="video/ogg">
-                Your browser does not support HTML5 video.
-            </video>
-        </div>
-    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-6" style="margin-left:7em; margin-top:30px">
+                    <button type="submit" class="btn btn-primary" style="width:100px"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+                </div>
+            </div>
+        </p>
+                        }
 </div>
 
 <table class="table" id="movieTable">
@@ -122,7 +109,7 @@
     </tr>
 
     @foreach (var item in Model)
-        {
+            {
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.genre.ID)
@@ -144,7 +131,7 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.membershipType)
-            </td>
+            </td>     
         </tr>
     }
 

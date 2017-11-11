@@ -264,6 +264,7 @@
     <Content Include="Content\shaglanti.png" />
     <Content Include="Content\the_notebook.jpg" />
     <Content Include="Content\the_wolf_of_wallstreet.jpg" />
+    <Content Include="Content\thor_trailer.mp4" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />

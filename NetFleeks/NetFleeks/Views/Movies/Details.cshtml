@@ -6,12 +6,19 @@
     ViewBag.Title = "Details";
 }
 
-<h1>Movie Details</h1>
+<h2 style="font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-weight:bold; color:#7e17aa; text-decoration: underline">@Html.DisplayFor(model => model.movieName) Details</h2>
+
 
 <div>
-    <h4>Movies</h4>
-    <hr />
     <dl class="dl-horizontal" id="details">
+        <hr />
+        <dt>
+            @Html.DisplayNameFor(model => model.genreID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.genreID)
+        </dd>
         <dt>
             @Html.DisplayNameFor(model => model.movieName)
         </dt>
@@ -52,9 +59,18 @@
             @Html.DisplayFor(model => model.summary)
         </dd>
 
+        <dt>
+            @Html.DisplayNameFor(model => model.membershipType)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.membershipType)
+        </dd>
+
     </dl>
+
+    <div style="margin-left: 5em">
+        @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+        @Html.ActionLink("Back to List", "Index")
+    </div>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>

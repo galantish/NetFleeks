@@ -10,6 +10,9 @@ using NetFleeks.Models;
 
 namespace NetFleeks.Controllers
 {
+
+    [Authorize]
+
     public class CinemasController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
@@ -17,7 +20,10 @@ namespace NetFleeks.Controllers
         // GET: Cinemas
         public ActionResult Index()
         {
-            return View(db.Cinemas.ToList());
+            if (User.IsInRole("Manager"))
+                return View("ManageCinemas", db.Cinemas.ToList());
+            else
+                return View("Index", db.Cinemas.ToList());
         }
 
         // GET: Cinemas/Details/5

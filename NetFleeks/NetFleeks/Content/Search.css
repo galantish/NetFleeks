@@ -10,6 +10,19 @@
     
 }
 
+#details dt
+{
+    text-align: left;
+    width: 120px;
+    margin-bottom: 10px;
+}
+
+#details dd
+{
+    text-align: left;
+    margin-left: auto;
+}
+
 #movieTable
 {
     border-collapse: collapse;
@@ -96,4 +109,14 @@
         .dropdown.dropdown-lg .dropdown-menu {
             min-width: 400px;
         }
+}
+
+#test
+{
+    margin-left: auto;
+}
+
+#test .control-label col-md-2
+{
+    color: yellow;
 }

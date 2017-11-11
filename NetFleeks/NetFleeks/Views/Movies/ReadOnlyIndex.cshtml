@@ -1,56 +1,89 @@
 ﻿@model IEnumerable<NetFleeks.Models.Movies>
 
+<!--  jQuery -->
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+
+<!-- Isolated Version of Bootstrap, not needed if your site already uses Bootstrap -->
+<link rel="stylesheet" href="https://formden.com/static/cdn/bootstrap-iso.css" />
+
+<!-- Bootstrap Date-Picker Plugin -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css" />
+
 <link rel="stylesheet" href="~/Content/Search.css" />
 
 @{
     ViewBag.Title = "Movies";
 }
 
-<h2>Movies</h2>
 
 
-<div class="container">
-    <div class="row">
-        <div class="col-md-12">
-            <div class="input-group" id="adv-search">
-                <input type="text" class="form-control" placeholder="Search for snippets" />
-                <div class="input-group-btn">
-                    <div class="btn-group" role="group">
-                        <div class="dropdown dropdown-lg">
-                            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><span class="caret"></span></button>
-                            <div class="dropdown-menu dropdown-menu-right" role="menu">
-                                <form class="form-horizontal" role="form">
-                                    <div class="form-group">
-                                        <label for="filter">Filter by</label>
-                                        <select class="form-control">
-                                            <option value="0" selected>All Snippets</option>
-                                            <option value="1">Featured</option>
-                                            <option value="2">Most popular</option>
-                                            <option value="3">Top rated</option>
-                                            <option value="4">Most commented</option>
-                                        </select>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="contain">Author</label>
-                                        <input class="form-control" type="text" />
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="contain">Contains the words</label>
-                                        <input class="form-control" type="text" />
-                                    </div>
-                                    <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
-                                </form>
-                            </div>
+<h1>Movies</h1>
+
+
+<div class="container" style="width:1800px;">
+    @using (Html.BeginForm("Search", "Movies"))
+    {
+        <p>
+            <div class="control-label" col-md-2">
+                <span class="label label-primary" style="font-size:18px; margin-left: -1.2em;">Search a Movie</span>
+            </div>
+            <div class="form-group" id="myForm" style="font-size:17px; margin-left: -2em; margin-top:20px;">
+                @Html.Label("Genre:", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10" style="margin-bottom:-1em">
+                    @{
+                        var genres = new List<SelectListItem>();
+                        genres.Add(new SelectListItem { Text = "", Value = "0" });
+                        genres.Add(new SelectListItem { Text = "Comedy", Value = "1" });
+                        genres.Add(new SelectListItem { Text = "Romance", Value = "2" });
+                        genres.Add(new SelectListItem { Text = "Drama", Value = "3" });
+                        genres.Add(new SelectListItem { Text = "Action", Value = "4" });
+                        genres.Add(new SelectListItem { Text = "Horror", Value = "5" });
+                        genres.Add(new SelectListItem { Text = "SciFi", Value = "6" });
+                        genres.Add(new SelectListItem { Text = "Kids", Value = "7" });
+                        genres.Add(new SelectListItem { Text = "Family", Value = "8" });
+                        genres.Add(new SelectListItem { Text = "Biography", Value = "9" });
+                        genres.Add(new SelectListItem { Text = "Adult", Value = "10" });
+                        genres.Add(new SelectListItem { Text = "Thriller", Value = "11" });
+                        genres.Add(new SelectListItem { Text = "Adventure", Value = "12" });
+                    }
+
+                    @Html.DropDownList("genreID", genres, htmlAttributes: new { @class = "form-control" }) <br />
+                </div>
+
+                @Html.Label("Membership Type:", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10" style="margin-bottom:-1em">
+                    @{
+                        var types = new List<SelectListItem>();
+                        types.Add(new SelectListItem { Text = "", Value = "0" });
+                        types.Add(new SelectListItem { Text = "Free", Value = "1" });
+                        types.Add(new SelectListItem { Text = "Premium", Value = "2" });
+                    }
+
+                    @Html.DropDownList("membershipTypeID", types, htmlAttributes: new { @class = "form-control" }) <br />
+                </div>
+
+                @Html.Label("Date Release:", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10" style="margin-bottom:-1em">
+                    <div class="input-group date" data-provide="datepicker">
+                        <input type="text" class="form-control" style="width:240px;" name="date">
+                        <div class="input-group-addon" style="width:30px; margin-left: 8px">
+                            <span class="glyphicon glyphicon-th"></span>
                         </div>
-                        <button type="button" class="btn btn-primary"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-6" style="margin-left:7em; margin-top:30px">
+                    <button type="submit" class="btn btn-primary" style="width:100px"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+                </div>
+            </div>
+        </p>
+                        }
 </div>
-<br />
-<table class="table">
+
+<table class="table" id="movieTable">
+    <br />
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.genre.ID)
@@ -70,31 +103,36 @@
         <th>
             @Html.DisplayNameFor(model => model.summary)
         </th>
-        <th></th>
+        <th>
+            @Html.DisplayNameFor(model => model.membershipType)
+        </th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.genre.ID)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.movieName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.dateAdded)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.releaseDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.actors)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.summary)
-        </td>
-        
-    </tr>
-}
+    @foreach (var item in Model)
+            {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.genre.ID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.movieName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.dateAdded)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.releaseDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.actors)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.summary)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.membershipType)
+            </td>     
+        </tr>
+    }
 
 </table>

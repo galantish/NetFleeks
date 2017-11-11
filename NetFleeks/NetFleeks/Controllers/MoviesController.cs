@@ -134,7 +134,7 @@ namespace NetFleeks.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize(Roles = "Manager")]
-        public ActionResult Create([Bind(Include = "ID,movieName,genreID,dateAdded,releaseDate,actors,summary")] Movies movies)
+        public ActionResult Create([Bind(Include = "ID,genreID,movieName,dateAdded,releaseDate,actors,summary, membershipType")] Movies movies)
         {
             if (ModelState.IsValid)
             {
@@ -170,7 +170,7 @@ namespace NetFleeks.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize(Roles = "Manager")]
-        public ActionResult Edit([Bind(Include = "ID,movieName,genreID,dateAdded,releaseDate,actors,summary")] Movies movies)
+        public ActionResult Edit([Bind(Include = "ID,genreID,movieName,dateAdded,releaseDate,actors,summary,membershipType")] Movies movies)
         {
             if (ModelState.IsValid)
             {

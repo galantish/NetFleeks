@@ -16,7 +16,13 @@ namespace NetFleeks.Migrations
                         cinemaAddress = c.String(nullable: false),
                     })
                 .PrimaryKey(t => t.ID);
-            
+
+            Sql(@"SET IDENTITY_INSERT [dbo].[Cinemas] ON
+            INSERT INTO [dbo].[Cinemas] ([ID], [cinemaName], [cinemaAddress]) VALUES (1, N'Cinema City', N'31.9838445,34.77120650000006')
+            INSERT INTO [dbo].[Cinemas] ([ID], [cinemaName], [cinemaAddress]) VALUES (2, N'Yes Planet', N'31.9796641,34.747589500000004')
+            SET IDENTITY_INSERT [dbo].[Cinemas] OFF
+            ");
+
             CreateTable(
                 "dbo.Genres",
                 c => new

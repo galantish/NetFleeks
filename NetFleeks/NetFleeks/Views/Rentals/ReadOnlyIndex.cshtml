@@ -10,7 +10,7 @@
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css" />
 
-<link rel="stylesheet" href="~/Content/Search.css" />
+<link rel="stylesheet" href="~/Content/bootstrap.css" />
 
 @{
     ViewBag.Title = "Rentals";
@@ -28,6 +28,11 @@
 
 </br>
 
+@if (!Model.Any())
+{
+    <p>You Have Not Rented a Movie Yet.</p>
+}
+else { 
 <table class="table">
     <tr>
         <th>
@@ -51,3 +56,4 @@
     }
    
 </table>
+}

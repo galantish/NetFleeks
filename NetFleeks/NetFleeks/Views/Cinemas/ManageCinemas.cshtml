@@ -1,24 +1,27 @@
 ﻿@model IEnumerable<NetFleeks.Models.Cinemas>
 
+<link rel="stylesheet" href="~/Content/CinemasMap.css" />
+
 @{
     ViewBag.Title = "Index";
 }
 
-<h2>Cinemas We Like</h2>
+<h2 id="pageTitle">Cinemas</h2>
 
-<p>
-        @Html.ActionLink("Create New", "Create")
-    </p>
-    <table class="table">
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.cinemaName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.cinemaAddress)
-            </th>
-            <th></th>
-        </tr>
+<p style="font-size:17px; margin-left:0.2em">
+    @Html.ActionLink("Create New Movie", "Create")
+</p>
+    
+<table class="table" id="rentalsTable">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.cinemaName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.cinemaAddress)
+        </th>
+        <th></th>
+    </tr>
 
     @foreach (var item in Model) {
         <tr>

@@ -4507,7 +4507,9 @@ textarea.input-group-sm > .input-group-btn > .btn {
 }
 
 .navbar-inverse .navbar-brand {
-  color: #999999;
+  color: red;
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: bold;
 }
 
 .navbar-inverse .navbar-brand:hover,
@@ -4517,16 +4519,21 @@ textarea.input-group-sm > .input-group-btn > .btn {
 }
 
 .navbar-inverse .navbar-text {
-  color: #999999;
+  color: #fff;
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 16px;
 }
 
 .navbar-inverse .navbar-nav > li > a {
-  color: #999999;
+  color: #fff;
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 16px;
+
 }
 
 .navbar-inverse .navbar-nav > li > a:hover,
 .navbar-inverse .navbar-nav > li > a:focus {
-  color: #ffffff;
+  color: red;
   background-color: transparent;
 }
 
@@ -6883,4 +6890,26 @@ td.visible-print {
     text-align: center;
     background-color: #1679c1;
     color: white;
+}
+
+#accountSettings
+{
+    width: 100%;
+    text-align:left;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+}
+
+#accountSettings dt
+{
+    text-align: left;
+    width: 260px;
+    padding: 5px;
+    margin-bottom: 10px;
+}
+
+#accountSettings dd
+{
+    text-align: left;
+    margin-left: auto;
 }

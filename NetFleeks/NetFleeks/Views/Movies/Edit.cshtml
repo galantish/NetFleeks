@@ -6,7 +6,7 @@
     ViewBag.Title = "Edit";
 }
 
-<h1>Edit Movie</h1>
+<h2 style="font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-weight:bold;">Edit @Html.DisplayFor(model => model.movieName)</h2>
 
 
 @using (Html.BeginForm())
@@ -19,15 +19,15 @@
         @Html.HiddenFor(model => model.ID)
 
         <div class="form-group">
-            @Html.LabelFor(model => model.movieName, htmlAttributes: new { @class = "control-label col-md-2" })
+            <label class="control-label col-md-2" style="margin-left:-1em; text-align: left; width: 120px">Movie Name</label>
             <div class="col-md-10">
-                @Html.EditorFor(model => model.movieName, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.movieName, new { htmlAttributes = new { @class = "form-control"} })
                 @Html.ValidationMessageFor(model => model.movieName, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group" style="margin-right:0px">
-            @Html.LabelFor(model => model.genreID, "Genre ID", htmlAttributes: new { @class = "control-label col-md-2" })
+            <label class="control-label col-md-2" style="margin-left:-1em; text-align: left; width: 120px">Genre ID</label>
             <div class="col-md-10" style="left">
                 @Html.DropDownList("genreID", null, htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.genreID, "", new { @class = "text-danger" })
@@ -35,7 +35,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.dateAdded, htmlAttributes: new { @class = "control-label col-md-2" })
+            <label class="control-label col-md-2" style="margin-left:-1em; text-align: left; width: 120px">Date Added</label>
             <div class="col-md-10">
                 @Html.EditorFor(model => model.dateAdded, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.dateAdded, "", new { @class = "text-danger" })
@@ -43,7 +43,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.releaseDate, htmlAttributes: new { @class = "control-label col-md-2" })
+            <label class="control-label col-md-2" style="margin-left:-1em; text-align: left; width: 120px">Release Date</label>
             <div class="col-md-10">
                 @Html.EditorFor(model => model.releaseDate, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.releaseDate, "", new { @class = "text-danger" })
@@ -51,7 +51,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.actors, htmlAttributes: new { @class = "control-label col-md-2" })
+            <label class="control-label col-md-2" style="margin-left:-1em; text-align: left; width: 120px">Actors</label>
             <div class="col-md-10">
                 @Html.EditorFor(model => model.actors, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.actors, "", new { @class = "text-danger" })
@@ -59,7 +59,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.summary, htmlAttributes: new { @class = "control-label col-md-2" })
+            <label class="control-label col-md-2" style="margin-left:-1em; text-align: left; width: 120px">Summary</label>
             <div class="col-md-10">
                 @Html.EditorFor(model => model.summary, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.summary, "", new { @class = "text-danger" })
@@ -67,16 +67,26 @@
         </div>
 
         <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-danger" />
+            <label class="control-label col-md-2" style="margin-left:-1em; text-align: left; width: 120px">Membership Type</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.membershipType, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.membershipType, "", new { @class = "text-danger" })
             </div>
         </div>
-    </div>
+        <br />
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-success" />
+            </div>
+            <div style="margin-left: 14em">
+                @Html.ActionLink("Back to List", "Index")
+            </div>
+        </div>
+</div>
 }
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
+
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

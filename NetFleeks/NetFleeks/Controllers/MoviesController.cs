@@ -25,6 +25,21 @@ namespace NetFleeks.Controllers
             else
                 return View("ReadOnlyIndex", movies.ToList());  
         }
+
+        // GET: Movies/MoviesByGenre/1
+        public ActionResult MoviesByGenre(int? genreID)
+        {
+            var movies = db.Movies.Include(m => m.genre);
+            IEnumerable<Movies> query = movies;
+            query = movies.Where(m => m.genreID == genreID);
+
+            if (User.IsInRole("Manager"))
+                return View("Index", query.ToList());
+            else
+                return View("ReadOnlyIndex", query.ToList());
+
+        }
+
         // GET: Movies
         [HttpPost]
         public ActionResult Search(string genreID, string membershipTypeID, string date)

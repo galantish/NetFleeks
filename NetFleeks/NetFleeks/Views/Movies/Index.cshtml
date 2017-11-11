@@ -16,7 +16,11 @@
     ViewBag.Title = "Movies";
 }
 
-<h1>Movies</h1>
+<h2 style="font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-weight:bold;">Movies</h2>
+
+<p style="font-size:17px">
+    @Html.ActionLink("Create New Movie", "Create")
+</p>
 
 <div class="container" style="width:1800px;">
     @using (Html.BeginForm("Search", "Movies"))

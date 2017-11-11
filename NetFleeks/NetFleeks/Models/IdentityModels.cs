@@ -55,6 +55,7 @@ namespace NetFleeks.Models
         public DbSet<Genres> Genres { get; set; }
         public DbSet<MembershipType> MembershipTypes { get; set; }
         public DbSet<Rentals> Rentals { get; set; }
+        public DbSet<NetFleeks.Models.Cinemas> Cinemas { get; set; }
 
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)

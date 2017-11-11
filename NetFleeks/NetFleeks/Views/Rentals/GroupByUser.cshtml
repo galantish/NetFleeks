@@ -28,35 +28,27 @@
 
 </p>
 
-<div class="container">
+@foreach (var user in Model.GroupBy(g => g.rentalUser))
+{
 
-    <table class="table">
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.movie)
-            </th>
+    <table class="table table-hover table-bordered">
+        <thead>
+            <tr><th width="60%">@Html.DisplayFor(modelItem => user.Key)</th></tr>
 
-            <th>
-                @Html.DisplayNameFor(model => model.rentalUser)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.rentalExpiration)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.genre)
-            </th>
-
-        </tr>
-
-        @foreach (var item in Model)
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.movie)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.genre)
+                </th>
+            </tr>
+        </thead>
+        @foreach (var item in user)
         {
             <tr>
                 <td>
                     @Html.DisplayFor(modelItem => item.movie)
-                </td>
-                <td>@Html.DisplayFor(modelItem => item.rentalUser)</td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.rentalExpiration)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.genre)
@@ -65,6 +57,4 @@
         }
 
     </table>
-
-
-</div>
+}

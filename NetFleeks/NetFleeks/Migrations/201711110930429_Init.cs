@@ -117,7 +117,6 @@ namespace NetFleeks.Migrations
             INSERT INTO [dbo].[Rentals] ([ID], [rentalUser], [rentalMovie], [rentalExpiration]) VALUES (15, N'HwaJosephson@netfleeks.com', N'Inception', N'2017-01-08 00:00:00')
             INSERT INTO [dbo].[Rentals] ([ID], [rentalUser], [rentalMovie], [rentalExpiration]) VALUES (19, N'DavidMace@netfleeks.com', N'Harry Potter and the Sorcerer''s Stone', N'2018-12-01 00:00:00')
             INSERT INTO [dbo].[Rentals] ([ID], [rentalUser], [rentalMovie], [rentalExpiration]) VALUES (20, N'LinneaVidaurri@netfleeks.com', N'Fifty Shades Darker', N'2017-01-11 00:00:00')
-            INSERT INTO [dbo].[Rentals] ([ID], [rentalUser], [rentalMovie], [rentalExpiration]) VALUES (23, N'genishbat', N'the', N'2017-11-13 00:00:00')
             INSERT INTO [dbo].[Rentals] ([ID], [rentalUser], [rentalMovie], [rentalExpiration]) VALUES (24, N'EthylMerryman@netfleeks.com', N'Inception', N'2017-01-11 00:00:00')
             INSERT INTO [dbo].[Rentals] ([ID], [rentalUser], [rentalMovie], [rentalExpiration]) VALUES (25, N'AldoIacovelli@netfleeks.com', N'Frozen', N'2017-02-12 00:00:00')
             INSERT INTO [dbo].[Rentals] ([ID], [rentalUser], [rentalMovie], [rentalExpiration]) VALUES (26, N'HwaJosephson@netfleeks.com', N'Inception', N'2017-01-08 00:00:00')

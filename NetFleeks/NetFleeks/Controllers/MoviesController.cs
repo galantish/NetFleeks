@@ -46,10 +46,25 @@ namespace NetFleeks.Controllers
             IEnumerable<Movies> query = movies;
             query = movies.Where(m => m.genreID == genreID);
 
+            var infoMovie = query.Join(
+                                        db.MembershipTypes,
+                                        r => r.membershipType,
+                                        m => m.ID,
+                                        (r, m) => new InfoMovieViewModel
+                                        {
+                                            genre = r.genre.genreName,
+                                            movie = r.movieName,
+                                            ID = r.ID,
+                                            dateAdded = r.dateAdded,
+                                            releaseDate = r.releaseDate,
+                                            actors = r.actors,
+                                            summary = r.summary,
+                                            membershipType = m.membershipType
+                                        });
             if (User.IsInRole("Manager"))
-                return View("Index", query.ToList());
+                return View("Index", infoMovie.ToList());
             else
-                return View("ReadOnlyIndex", query.ToList());
+                return View("ReadOnlyIndex", infoMovie.ToList());
 
         }
 

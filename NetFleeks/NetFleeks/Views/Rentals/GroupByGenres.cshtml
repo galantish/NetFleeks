@@ -24,47 +24,43 @@
     @Html.ActionLink("Current Rentals", "Index")&nbsp &nbsp &nbsp &nbsp
     @Html.ActionLink("Group By Users", "GroupBy1")&nbsp &nbsp &nbsp &nbsp
     @Html.ActionLink("Group By Genres", "GroupBy2")&nbsp &nbsp &nbsp &nbsp
-
-
 </p>
 
-<div class="container">
+@foreach (var genre in Model.GroupBy(g => g.genre))
+{
+    
+    <table class="table table-hover table-bordered">
+        <thead>
+            <tr><th>@Html.DisplayFor(modelItem => genre.Key)</th></tr>
 
-    <table class="table">
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.movie)
-            </th>
-
-            <th>
-                @Html.DisplayNameFor(model => model.rentalUser)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.rentalExpiration)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.genre)
-            </th>
-
-        </tr>
-
-        @foreach (var item in Model)
-        {
             <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.movie)
-                </td>
-                <td>@Html.DisplayFor(modelItem => item.rentalUser)</td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.rentalExpiration)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.genre)
-                </td>
+                <th>
+                    @Html.DisplayNameFor(model => model.movie)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.rentalUser)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.rentalExpiration)
+                </th>
             </tr>
-        }
+        </thead>
+            @foreach (var item in genre)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.movie)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.rentalUser)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.rentalExpiration)
+                    </td>
+                </tr>
+            }
 
     </table>
+}
 
 
-</div>

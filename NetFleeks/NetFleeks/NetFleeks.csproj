@@ -240,6 +240,7 @@
     <Compile Include="Startup.cs" />
     <Compile Include="Models\Genres.cs" />
     <Compile Include="Models\Rentals.cs" />
+    <Compile Include="ViewModel\RentalViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
@@ -347,6 +348,8 @@
     <Content Include="Views\Cinemas\Edit.cshtml" />
     <Content Include="Views\Cinemas\Index.cshtml" />
     <Content Include="Views\Cinemas\ManageCinemas.cshtml" />
+    <Content Include="Views\Rentals\GroupByGenres.cshtml" />
+    <Content Include="Views\Rentals\GroupByUser.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

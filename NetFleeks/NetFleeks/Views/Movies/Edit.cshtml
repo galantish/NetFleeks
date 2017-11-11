@@ -12,30 +12,46 @@
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        @Html.HiddenFor(model => model.ID)
 
         <div class="form-group">
-            <label class="control-label col-md-2" style="margin-left:-1em; text-align: left; width: 120px">Movie Name</label>
+            <label class="control-label col-md-2" style="margin-left:-1em; text-align: left; width: 150px">Genre</label>
+            <div class="col-md-10" style="margin-bottom:-1em">
+                @{
+                    var genres = new List<SelectListItem>();
+                    genres.Add(new SelectListItem { Text = "Comedy", Value = "1" });
+                    genres.Add(new SelectListItem { Text = "Romance", Value = "2" });
+                    genres.Add(new SelectListItem { Text = "Drama", Value = "3" });
+                    genres.Add(new SelectListItem { Text = "Action", Value = "4" });
+                    genres.Add(new SelectListItem { Text = "Horror", Value = "5" });
+                    genres.Add(new SelectListItem { Text = "SciFi", Value = "6" });
+                    genres.Add(new SelectListItem { Text = "Kids", Value = "7" });
+                    genres.Add(new SelectListItem { Text = "Family", Value = "8" });
+                    genres.Add(new SelectListItem { Text = "Biography", Value = "9" });
+                    genres.Add(new SelectListItem { Text = "Adult", Value = "10" });
+                    genres.Add(new SelectListItem { Text = "Thriller", Value = "11" });
+                    genres.Add(new SelectListItem { Text = "Adventure", Value = "12" });
+                }
+
+                @Html.DropDownList("genreID", genres, htmlAttributes: new { @class = "form-control" }) <br />
+                @Html.ValidationMessageFor(model => model.genreID, "", new { @class = "text-danger" })
+
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2" style="margin-left:-1em; text-align: left; width: 150px">Movie Name</label>
             <div class="col-md-10">
-                @Html.EditorFor(model => model.movieName, new { htmlAttributes = new { @class = "form-control"} })
+                @Html.EditorFor(model => model.movieName, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.movieName, "", new { @class = "text-danger" })
             </div>
         </div>
 
-        <div class="form-group" style="margin-right:0px">
-            <label class="control-label col-md-2" style="margin-left:-1em; text-align: left; width: 120px">Genre ID</label>
-            <div class="col-md-10" style="left">
-                @Html.DropDownList("genreID", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.genreID, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
         <div class="form-group">
-            <label class="control-label col-md-2" style="margin-left:-1em; text-align: left; width: 120px">Date Added</label>
+            <label class="control-label col-md-2" style="margin-left:-1em; text-align: left; width: 150px">Date Added</label>
             <div class="col-md-10">
                 @Html.EditorFor(model => model.dateAdded, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.dateAdded, "", new { @class = "text-danger" })
@@ -43,7 +59,7 @@
         </div>
 
         <div class="form-group">
-            <label class="control-label col-md-2" style="margin-left:-1em; text-align: left; width: 120px">Release Date</label>
+            <label class="control-label col-md-2" style="margin-left:-1em; text-align: left; width: 150px">Release Date</label>
             <div class="col-md-10">
                 @Html.EditorFor(model => model.releaseDate, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.releaseDate, "", new { @class = "text-danger" })
@@ -51,7 +67,7 @@
         </div>
 
         <div class="form-group">
-            <label class="control-label col-md-2" style="margin-left:-1em; text-align: left; width: 120px">Actors</label>
+            <label class="control-label col-md-2" style="margin-left:-1em; text-align: left; width: 150px">Actors</label>
             <div class="col-md-10">
                 @Html.EditorFor(model => model.actors, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.actors, "", new { @class = "text-danger" })
@@ -59,7 +75,7 @@
         </div>
 
         <div class="form-group">
-            <label class="control-label col-md-2" style="margin-left:-1em; text-align: left; width: 120px">Summary</label>
+            <label class="control-label col-md-2" style="margin-left:-1em; text-align: left; width: 150px">Summary</label>
             <div class="col-md-10">
                 @Html.EditorFor(model => model.summary, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.summary, "", new { @class = "text-danger" })
@@ -67,13 +83,18 @@
         </div>
 
         <div class="form-group">
-            <label class="control-label col-md-2" style="margin-left:-1em; text-align: left; width: 120px">Membership Type</label>
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.membershipType, new { htmlAttributes = new { @class = "form-control" } })
+            <label class="control-label col-md-2" style="margin-left:-1em; text-align: left; width: 150px">Membership Type</label>
+            <div class="col-md-10" style="margin-bottom:-1em">
+                @{
+                    var types = new List<SelectListItem>();
+                    types.Add(new SelectListItem { Text = "Free", Value = "1" });
+                    types.Add(new SelectListItem { Text = "Premium", Value = "2" });
+                }
+                @Html.DropDownList("membershipType", types, htmlAttributes: new { @class = "form-control" }) <br />
                 @Html.ValidationMessageFor(model => model.membershipType, "", new { @class = "text-danger" })
+
             </div>
         </div>
-        <br />
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
@@ -83,8 +104,8 @@
                 @Html.ActionLink("Back to List", "Index")
             </div>
         </div>
-</div>
-}
+    </div>
+                    }
 
 
 

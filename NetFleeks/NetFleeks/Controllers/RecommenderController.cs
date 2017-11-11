@@ -24,29 +24,66 @@ using NReco.CF.Taste.Impl.Model;
 using NReco.CF.Taste.Recommender;
 
 using CsvHelper;
+using NetFleeks.Models;
 
 namespace Controllers
 {
 
     public class RecommenderController : Controller
     {
-
-        public ActionResult RecommendFilmPage()
-        {
-            return View();
-        }
+        private ApplicationDbContext db = new ApplicationDbContext();
 
         static IDataModel dataModel;
 
-        public ActionResult GetRecommendedFilms(string filmIdsJson)
+        public ActionResult GetRecommendedFilms()
         {
-            var filmIds = (new JavaScriptSerializer()).Deserialize<long[]>(filmIdsJson);
+            var csv = new CsvReader(new StreamReader(System.Web.HttpContext.Current.Server.MapPath("~/App_Data/movies.csv")));
+            var records = csv.GetRecords<MovieRecord>();
+            int favouriteGenre = db.Users.Where(u => u.UserName == User.Identity.Name).Select(u => u.genreID).SingleOrDefault();
+            var userRentals = db.Rentals.Where(m => m.rentalUser == User.Identity.Name).Join(db.Movies,
+                                                                                                       r => r.rentalMovie,
+                                                                                                       m => m.movieName,
+                                                                                                       (r, m) => new
+                                                                                                       {
+                                                                                                           genreId = m.genreID,
+                                                                                                           movieName = m.movieName,
+                                                                                                           rentalUer = r.rentalUser
+                                                                                                       });
+            if (userRentals.Count() == 0)
+            {
+                return Json(new Dictionary<string, object>() {
+                {"film_id", 0},
+                {"rating", 0},
+            });
+            }
+            else if (userRentals.Where(m => m.genreId == favouriteGenre).Count() != 0)
+                userRentals = userRentals.Where(m => m.genreId == favouriteGenre);
+
+            long[] filmIdsTemp = new long[userRentals.Count()];
+            int movieCounter = 0;
+            foreach (var item in userRentals)
+            {
+                foreach (var record in records)
+                {
+                    if (item.movieName == record.title)
+                    {
+                        if (!filmIdsTemp.Contains(record.movieId)) { 
+                            filmIdsTemp[movieCounter] = record.movieId;
+                            movieCounter++;
+                        }
+                    }
+                }
+            }
+            long[] filmIds = new long[movieCounter];
+            for (int i = 0; i < movieCounter; i++)
+                filmIds[i] = filmIdsTemp[i];
 
             var dataModel = GetDataModel();
 
             // recommendation is performed for the user that is missed in the preferences data
             var plusAnonymModel = new PlusAnonymousUserDataModel(dataModel);
-            var prefArr = new GenericUserPreferenceArray(filmIds.Length);
+            var prefArr = new GenericUserPreferenceArray(userRentals.Count());
+
             prefArr.SetUserID(0, PlusAnonymousUserDataModel.TEMP_USER_ID);
             for (int i = 0; i < filmIds.Length; i++)
             {
@@ -62,10 +99,18 @@ namespace Controllers
             var recommender = new GenericUserBasedRecommender(plusAnonymModel, neighborhood, similarity);
             var recommendedItems = recommender.Recommend(PlusAnonymousUserDataModel.TEMP_USER_ID, 1, null);
 
+            if (recommendedItems.Count() == 0)
+            {
+                return Json(new Dictionary<string, object>() {
+                {"film_id", 0},
+                {"rating", 0},
+            });
+            }
+
             return Json(recommendedItems.Select(ri => new Dictionary<string, object>() {
                 {"film_id", ri.GetItemID() },
                 {"rating", ri.GetValue() },
-            }).ToArray());
+            }).ToArray()[0]);
         }
 
         /// <summary>

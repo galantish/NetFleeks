@@ -240,6 +240,7 @@
     <Compile Include="Startup.cs" />
     <Compile Include="Models\Genres.cs" />
     <Compile Include="Models\Rentals.cs" />
+    <Compile Include="ViewModel\InfoMovieViewModel.cs" />
     <Compile Include="ViewModel\RentalViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -278,6 +279,8 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="App_Data\movies.csv" />
+    <Content Include="App_Data\ratings.csv" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -353,7 +356,6 @@
     <Content Include="Views\Rentals\GroupByUser.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
     <Folder Include="Views\Recommender\" />
   </ItemGroup>
   <ItemGroup>

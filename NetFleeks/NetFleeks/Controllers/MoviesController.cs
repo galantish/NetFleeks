@@ -7,6 +7,8 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using NetFleeks.Models;
+using NetFleeks.ViewModel;
+
 
 namespace NetFleeks.Controllers
 {
@@ -17,13 +19,24 @@ namespace NetFleeks.Controllers
         // GET: Movies
         public ActionResult Index()
         {
-            var movies = db.Movies.Include(m => m.genre);   
-            //return View(movies.ToList());
+            var infoMovie = db.Movies.Join(
+                                        db.MembershipTypes,
+                                        r => r.membershipType,
+                                        m => m.ID,
+                                        (r, m) => new InfoMovieViewModel{
+                                        genre = r.genre.genreName,
+                                        movie = r.movieName,
+                                        ID = r.ID,
+                                        dateAdded =r.dateAdded,
+                                        releaseDate =r.releaseDate,
+                                        actors = r.actors,
+                                        summary = r.summary,
+                                        membershipType =m.membershipType });
 
             if (User.IsInRole("Manager"))
-                return View("Index",movies.ToList());
+                return View("Index",infoMovie.ToList());
             else
-                return View("ReadOnlyIndex", movies.ToList());  
+                return View("ReadOnlyIndex", infoMovie.ToList());  
         }
 
         // GET: Movies/MoviesByGenre/1
@@ -33,10 +46,25 @@ namespace NetFleeks.Controllers
             IEnumerable<Movies> query = movies;
             query = movies.Where(m => m.genreID == genreID);
 
+            var infoMovie = query.Join(
+                                        db.MembershipTypes,
+                                        r => r.membershipType,
+                                        m => m.ID,
+                                        (r, m) => new InfoMovieViewModel
+                                        {
+                                            genre = r.genre.genreName,
+                                            movie = r.movieName,
+                                            ID = r.ID,
+                                            dateAdded = r.dateAdded,
+                                            releaseDate = r.releaseDate,
+                                            actors = r.actors,
+                                            summary = r.summary,
+                                            membershipType = m.membershipType
+                                        });
             if (User.IsInRole("Manager"))
-                return View("Index", query.ToList());
+                return View("Index", infoMovie.ToList());
             else
-                return View("ReadOnlyIndex", query.ToList());
+                return View("ReadOnlyIndex", infoMovie.ToList());
 
         }
 
@@ -96,11 +124,25 @@ namespace NetFleeks.Controllers
 
             //var movies = db.Movies.Include(m => m.genre);
             //return View(movies.ToList());
-
+            var infoMovie = query.Join(
+                                        db.MembershipTypes,
+                                        r => r.membershipType,
+                                        m => m.ID,
+                                        (r, m) => new InfoMovieViewModel
+                                        {
+                                            genre = r.genre.genreName,
+                                            movie = r.movieName,
+                                            ID = r.ID,
+                                            dateAdded = r.dateAdded,
+                                            releaseDate = r.releaseDate,
+                                            actors = r.actors,
+                                            summary = r.summary,
+                                            membershipType = m.membershipType
+                                        });
             if (User.IsInRole("Manager"))
-                return View("Index", query.ToList());
+                return View("Index", infoMovie.ToList());
             else
-                return View("ReadOnlyIndex", query.ToList());
+                return View("ReadOnlyIndex", infoMovie.ToList());
         }
 
 

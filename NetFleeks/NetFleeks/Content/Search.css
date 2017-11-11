@@ -6,7 +6,8 @@
 #details
 {
     width: 100%;
-    text-align:left;  
+    text-align:left;
+    
 }
 
 #movieTable
@@ -96,5 +97,3 @@
             min-width: 400px;
         }
 }
-
-

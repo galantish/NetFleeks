@@ -16,10 +16,13 @@ namespace NetFleeks.Controllers
         public ActionResult Index()
         {
             var user = User.Identity.Name;
-            var rentals = db.Rentals.Include(m => m.rentalMovie);
+            var rentals = db.Rentals;
 
             if (User.IsInRole("Manager"))
+            { 
+                //IEnumerable<Rentals> groupByRentals = rentals.GroupBy(rentals,user);
                 return View("Index", rentals.ToList());
+            }
             else
             {
                 IEnumerable<Rentals> userRentals = rentals.Where(m => m.rentalUser == user);
@@ -27,13 +30,13 @@ namespace NetFleeks.Controllers
             }
         }
 
-        public ActionResult Rent(Movies movie)
+        public ActionResult Rent(string movie)
         {
             var rental = new Rentals
             {
                 rentalUser = User.Identity.Name,
                 rentalExpiration = DateTime.Today.AddDays(3),
-                rentalMovie = movie.movieName
+                rentalMovie = movie
             };
 
             db.Rentals.Add(rental);

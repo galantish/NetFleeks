@@ -44,7 +44,7 @@ namespace NetFleeks.Controllers
         {
             var user = User.Identity.Name;
             var rentals = db.Rentals;
-            IEnumerable<Rentals> userRentals = rentals.Where(m => m.rentalUser == user);
+            IEnumerable<Rentals> userRentals = rentals.Where(m => m.rentalUser == user && m.rentalExpiration>=DateTime.Today);
             var dupCheck = false;
 
             foreach(Rentals rental in userRentals)

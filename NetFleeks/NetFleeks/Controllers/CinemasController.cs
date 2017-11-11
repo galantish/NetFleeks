@@ -10,6 +10,9 @@ using NetFleeks.Models;
 
 namespace NetFleeks.Controllers
 {
+
+    [Authorize]
+
     public class CinemasController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();

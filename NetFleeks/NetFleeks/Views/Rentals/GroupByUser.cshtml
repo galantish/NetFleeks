@@ -42,6 +42,9 @@
                 <th>
                     @Html.DisplayNameFor(model => model.genre)
                 </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.rentalExpiration)
+                </th>
             </tr>
         </thead>
         @foreach (var item in user)
@@ -53,7 +56,9 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.genre)
                 </td>
-            </tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.rentalExpiration)
+                </td></tr>
         }
 
     </table>

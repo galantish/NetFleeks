@@ -40,6 +40,9 @@
                 <th>
                     @Html.DisplayNameFor(model => model.rentalUser)
                 </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.rentalExpiration)
+                </th>
             </tr>
         </thead>
             @foreach (var item in genre)
@@ -50,6 +53,9 @@
                     </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.rentalUser)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.rentalExpiration)
                     </td>
                 </tr>
             }

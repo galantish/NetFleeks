@@ -13,10 +13,11 @@ namespace NetFleeks.Models
         public string rentalUser { get; set; }
 
         [Display(Name = "Rented Movie")]
-        public Movies rentalMovie { get; set; }
+        public string rentalMovie { get; set; }
 
         [Display(Name = "Rental Expiration Date")]
         public DateTime rentalExpiration { get; set; }
+
     }
 
 }

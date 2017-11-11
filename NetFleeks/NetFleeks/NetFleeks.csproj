@@ -240,6 +240,7 @@
     <Compile Include="Startup.cs" />
     <Compile Include="Models\Genres.cs" />
     <Compile Include="Models\Rentals.cs" />
+    <Compile Include="ViewModel\RentalViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
@@ -256,6 +257,7 @@
     <Content Include="Content\haviv.png" />
     <Content Include="Content\Home.css" />
     <Content Include="Content\inception.jpg" />
+    <Content Include="Content\logo.png" />
     <Content Include="Content\netfleeks1.png" />
     <Content Include="Content\netfleeks2.png" />
     <Content Include="Content\scream.jpg" />
@@ -263,6 +265,7 @@
     <Content Include="Content\shaglanti.png" />
     <Content Include="Content\the_notebook.jpg" />
     <Content Include="Content\the_wolf_of_wallstreet.jpg" />
+    <Content Include="Content\thor_trailer.mp4" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -347,6 +350,8 @@
     <Content Include="Views\Cinemas\Edit.cshtml" />
     <Content Include="Views\Cinemas\Index.cshtml" />
     <Content Include="Views\Cinemas\ManageCinemas.cshtml" />
+    <Content Include="Views\Rentals\GroupByGenres.cshtml" />
+    <Content Include="Views\Rentals\GroupByUser.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\Recommender\" />

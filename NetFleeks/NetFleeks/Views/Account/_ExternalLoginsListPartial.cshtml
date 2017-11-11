@@ -2,7 +2,7 @@
 @using Microsoft.Owin.Security
 
 <hr />
-<h4 style="font-weight: bold; font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif">Use a local account to login</h4>
+<h4 id="loginType">Use a local account to login</h4>
 <br/>
 @{
     var loginProviders = Context.GetOwinContext().Authentication.GetExternalAuthenticationTypes();
@@ -20,7 +20,7 @@
             <div id="socialLoginList">
                 <p>
                     @foreach (AuthenticationDescription p in loginProviders) {
-                        <button type="submit" style="margin-left:5em;" class="btn btn-primary" id="@p.AuthenticationType" name="provider" value="@p.AuthenticationType" title="Login using your @p.Caption account">@p.AuthenticationType</button>
+                        <button type="submit" style="margin-left:10em;" class="btn btn-primary" id="@p.AuthenticationType" name="provider" value="@p.AuthenticationType" title="Login using your @p.Caption account">@p.AuthenticationType</button>
                     }
                 </p>
             </div>

@@ -1,4 +1,5 @@
-﻿@model IEnumerable<NetFleeks.Models.Rentals>
+﻿@model IEnumerable<NetFleeks.ViewModel.RentalViewModel>
+
 
 <!--  jQuery -->
 <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
@@ -18,35 +19,52 @@
 
 <h2>Rentals</h2>
 
+<p style="font-size:17px">
+    @Html.ActionLink("All times Rentals", "IndexAll")&nbsp &nbsp &nbsp &nbsp
+    @Html.ActionLink("Current Rentals", "Index")&nbsp &nbsp &nbsp &nbsp
+    @Html.ActionLink("Group By Users", "GroupBy1")&nbsp &nbsp &nbsp &nbsp
+    @Html.ActionLink("Group By Genres", "GroupBy2")&nbsp &nbsp &nbsp &nbsp
+
+
+</p>
+
 <div class="container">
-    
+
     <table class="table">
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.rentalMovie)
+                @Html.DisplayNameFor(model => model.movie)
             </th>
 
-            <th>@Html.DisplayNameFor(model => model.rentalUser)</th>
+            <th>
+                @Html.DisplayNameFor(model => model.rentalUser)
+            </th>
             <th>
                 @Html.DisplayNameFor(model => model.rentalExpiration)
             </th>
+            <th>
+                @Html.DisplayNameFor(model => model.genre)
+            </th>
+
         </tr>
 
         @foreach (var item in Model)
         {
             <tr>
                 <td>
-                    @Html.DisplayFor(modelItem => item.rentalMovie)
+                    @Html.DisplayFor(modelItem => item.movie)
                 </td>
                 <td>@Html.DisplayFor(modelItem => item.rentalUser)</td>
                 <td>
                     @Html.DisplayFor(modelItem => item.rentalExpiration)
                 </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.genre)
+                </td>
             </tr>
         }
 
     </table>
+
+
 </div>
-
-
-

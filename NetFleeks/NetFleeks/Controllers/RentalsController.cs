@@ -6,6 +6,8 @@ using System.Web.Mvc;
 using NetFleeks.Models;
 using System.Data.Entity;
 using System.Collections;
+using NetFleeks.ViewModel;
+using System.Data;
 
 namespace NetFleeks.Controllers
 {
@@ -14,19 +16,22 @@ namespace NetFleeks.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Rentals
+        
         public ActionResult Index()
         {
             var user = User.Identity.Name;
-            var rentals = db.Rentals;
+
+            var rentals = db.Rentals.Where(m => m.rentalExpiration >= DateTime.Today);
 
             if (User.IsInRole("Manager"))
-            { 
+            {
                 //IEnumerable<Rentals> groupByRentals = rentals.GroupBy(rentals,user);
-                return View("Index", rentals.ToList());
+                var rentalsGenre = rentals.Join(db.Movies, r => r.rentalMovie, m => m.movieName, (r,m) => new RentalViewModel {movie = r.rentalMovie, genre = m.genre.genreName, rentalUser = r.rentalUser , rentalExpiration = r.rentalExpiration});       
+                return View("Index", rentalsGenre.ToList());
             }
             else
             {
-                IEnumerable<Rentals> userRentals = rentals.Where(m => m.rentalUser == user && m.rentalExpiration >= DateTime.Today);
+                IEnumerable<Rentals> userRentals = rentals.Where(m => m.rentalUser == user);
                 return View("ReadOnlyIndex", userRentals.ToList());
             }
         }
@@ -34,9 +39,38 @@ namespace NetFleeks.Controllers
         {
             var user = User.Identity.Name;
             var rentals = db.Rentals;
+
+            if (User.IsInRole("Manager"))
+            {
+                var rentalsGenre = rentals.Join(db.Movies, r => r.rentalMovie, m => m.movieName, (r, m) => new RentalViewModel { movie = r.rentalMovie, genre = m.genre.genreName, rentalUser = r.rentalUser, rentalExpiration = r.rentalExpiration });
+                return View("Index", rentalsGenre.ToList());
+            }
+
+            else { 
             IEnumerable<Rentals> userAllRentals = rentals.Where(m => m.rentalUser == user);
             return View("ReadOnlyIndex", userAllRentals.ToList());
+            }
+
+        }
+
+        [Authorize (Roles = "Manager")]
+        public ActionResult GroupBy1()
+        {
+            var rentals = db.Rentals;
+            var rentalsGenre = rentals.Join(db.Movies, r => r.rentalMovie, m => m.movieName, (r, m) => new RentalViewModel { movie = r.rentalMovie, genre = m.genre.genreName, rentalUser = r.rentalUser, rentalExpiration = r.rentalExpiration });
             
+            return View("GroupByUser", rentalsGenre.ToList());
+           
+        }
+
+        [Authorize(Roles = "Manager")]
+        public ActionResult GroupBy2()
+        {
+            var rentals = db.Rentals;
+            var rentalsGenre = rentals.Join(db.Movies, r => r.rentalMovie, m => m.movieName, (r, m) => new RentalViewModel { movie = r.rentalMovie, genre = m.genre.genreName, rentalUser = r.rentalUser, rentalExpiration = r.rentalExpiration });
+            
+            return View("GroupByGenres", rentalsGenre.ToList());
+
         }
 
 

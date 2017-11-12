@@ -8,7 +8,7 @@
 
 <h2 id="pageTitle">Cinemas</h2>
 
-<p style="font-size:17px; margin-left:0.2em">
+<p style="font-size:17px; margin-left:0.2em; color:#1679c1; font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif">
     @Html.ActionLink("Create New Cinema", "Create")
 </p>
     
@@ -20,7 +20,9 @@
         <th>
             @Html.DisplayNameFor(model => model.cinemaAddress)
         </th>
-        <th></th>
+        <th>
+            Options
+        </th>
     </tr>
 
     @foreach (var item in Model) {
@@ -31,11 +33,11 @@
             <td>
                 @Html.DisplayFor(modelItem => item.cinemaAddress)
             </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
-                @Html.ActionLink("Details", "Details", new { id=item.ID }) |
-                @Html.ActionLink("Delete", "Delete", new { id=item.ID })
-            </td>
-        </tr>
+            <td style="margin-left:0.2em; color:#1679c1; font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif">
+                @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+                @Html.ActionLink("Details", "Details", new { id = item.ID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+                </td>
+</tr>
     }
 </table>

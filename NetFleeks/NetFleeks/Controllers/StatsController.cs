@@ -13,80 +13,50 @@ namespace NetFleeks.Models
       
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        // GET: Stats
-        public ActionResult Index()
-        {
-            return View();
-        }
+       
 
-        /*  public ActionResult GenreCount()
+          public ActionResult GenreCount()
           {
               var rentals = db.Rentals;
-              var rentalsGenre = rentals.Join(db.Movies, r => r.rentalMovie, m => m.movieName, (r, m) => new RentalViewModel { movie = r.rentalMovie, genre = m.genre.genreName, rentalUser = r.rentalUser, rentalExpiration = r.rentalExpiration });
-              var pieGenreCollection = rentalsGenre.GroupBy(t => t.genre).Select(i => new { genre = i.Key, Count = i.Count() });
-              
+              var rentalsGenre = rentals.Join(db.Movies, r => r.rentalMovie, m => m.movieName, (r, m) => new RentalViewModel { movie = r.rentalMovie, genre = m.genre.genreName, rentalUser = r.rentalUser, rentalExpiration = r.rentalExpiration }).ToList();
+            
+              var pieGenreCollection = rentalsGenre.GroupBy(t => t.genre, (key, g) =>
+            {
+                var arr = new String[2];
+                arr[0] = g.Count().ToString();
+                arr[1] = key;
 
-              genreBuilder.AppendLine("genre,count");
+                return arr;
+            }).ToArray();
 
-             
-             
-              return View("Stats", pieGenreCollection.ToArray());
+            ViewBag.Title = "Rentals per Genre";
+
+
+            return View("TypeCount", pieGenreCollection);
 
           }
 
-          public ActionResult TypeCount()
-          {
-          //Need to change to Array but with the same logic
-              var userGroups = db.Users.GroupBy(x => x.membershipTypeID).Select(x => new { ID = x.Key, Count = x.Count() });
+        public ActionResult MoviesCount()
+        {
+            var movies = db.Movies;
+            var moviesGenres = movies.Join(db.Genres, r => r.genreID, m => m.ID, (r, m) => new InfoMovieViewModel { movie = r.movieName, genre = m.genreName }).ToList();
 
-              int premiumCount = userGroups.Single(x => x.ID == db.MembershipTypes.FirstOrDefault(mem => mem.membershipType.Equals("Premium")).ID).Count;
-              int freeCount = userGroups.Single(x => x.ID == db.MembershipTypes.FirstOrDefault(mem => mem.membershipType.Equals("Free")).ID).Count;
+            var pieGenreCollection = moviesGenres.GroupBy(t => t.genre, (key, g) =>
+            {
+                var arr = new string[2];
+                arr[0] = g.Count().ToString();
+                arr[1] = key;
 
-              string memTypesCSV = string.Format("type,count\\nPremium,{0}\\nFree,{1}", premiumCount, freeCount);
+                return arr;
+            }).ToArray();
 
-              Stats stats = new Stats() { memTypeCsv = memTypesCSV };
-              return View("TypeCount", stats);
-
-          }*/
+            ViewBag.Title = "Movies Per Genre";
 
 
+            return View("TypeCount", pieGenreCollection);
 
-        // GET: Posts/StatsByDate/
-        /* public ActionResult Stats(int type)
-         {
-             var results = db.Posts.ToList().OrderBy(post => post.PublishedDate);
+        }
 
-             if (type == 1)
-             {
-                 var res = results.GroupBy(post2 => post2.PublishedDate.ToShortDateString(), (key, g) =>
-                 {
-                     var arr = new String[2];
-                     arr[0] = g.Count().ToString();
-                     arr[1] = key;
-
-                     return arr;
-                 }).ToArray();
-
-                 ViewBag.Title = "Posts per date";
-
-                 return View("Stats", res);
-
-             }
-             else
-             {
-                 var res = results.GroupBy(post2 => post2.Fan.Username, (key, g) => {
-                     var arr = new String[2];
-                     arr[0] = g.Count().ToString();
-                     arr[1] = key;
-
-                     return arr;
-                 }).ToArray();
-
-                 ViewBag.Title = "Posts per User";
-
-                 return View("Stats", res);
-
-             }
-         }*/
+        
     }
 }

@@ -262,6 +262,8 @@
     <Content Include="Content\netfleeks1.png" />
     <Content Include="Content\netfleeks2.png" />
     <Content Include="Content\d3.css" />
+    <Content Include="Content\About.css" />
+    <Content Include="Content\Manage.css" />
     <Content Include="Content\scream.jpg" />
     <Content Include="Content\Rental.css" />
     <Content Include="Content\Search.css" />
@@ -275,6 +277,7 @@
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\ai.0.22.9-build00167.js" />
     <Content Include="Scripts\ai.0.22.9-build00167.min.js" />
+    <Content Include="Scripts\anim.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
@@ -283,6 +286,7 @@
     <Content Include="App_Data\movies.csv" />
     <Content Include="App_Data\ratings.csv" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\canvastree.js" />
     <Content Include="Scripts\d3.js" />
     <Content Include="Scripts\d3.min.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />

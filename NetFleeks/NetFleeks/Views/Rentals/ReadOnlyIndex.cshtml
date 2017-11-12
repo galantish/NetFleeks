@@ -6,31 +6,7 @@
 <!-- Isolated Version of Bootstrap, not needed if your site already uses Bootstrap -->
 <link rel="stylesheet" href="https://formden.com/static/cdn/bootstrap-iso.css" />
 
-<!-- Bootstrap Date-Picker Plugin -->
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css" />
-
-<!-- Facebook Api -->
-<script>
-    window.fbAsyncInit = function () {
-        FB.init({
-            appId: '1845371499107938',
-            autoLogAppEvents: true,
-            xfbml: true,
-            version: 'v2.11'
-        });
-    };
-
-    (function (d, s, id) {
-        var js, fjs = d.getElementsByTagName(s)[0];
-        if (d.getElementById(id)) { return; }
-        js = d.createElement(s); js.id = id;
-        js.src = "https://connect.facebook.net/en_US/sdk.js";
-        fjs.parentNode.insertBefore(js, fjs);
-    }(document, 'script', 'facebook-jssdk'));
-</script>
-
-<link rel="stylesheet" href="~/Content/Search.css" />
+<link rel="stylesheet" href="~/Content/Rental.css" />
 
 @{
     ViewBag.Title = "Rentals";
@@ -38,18 +14,18 @@
 
 <h2 id="pageTitle">Rentals</h2>
 <br />
-<p style="font-size:17px; font-weight: bold; font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif">
-   @Html.ActionLink("Rent a New Movie", "Index", "Movies")&nbsp &nbsp &nbsp &nbsp
-   @Html.ActionLink("All time Rentals", "IndexAll")&nbsp &nbsp &nbsp &nbsp
-   @Html.ActionLink("Current Rentals", "Index")
 
+<p style="font-size:20px; color:#1679c1; font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif"">
+    &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp;
+    @Html.ActionLink("Rent a New Movie", "Index", "Movies") &nbsp | &nbsp
+    @Html.ActionLink("All time Rentals", "IndexAll") &nbsp | &nbsp
+    @Html.ActionLink("Current Rentals", "Index") &nbsp
 </p>
 
-</br>
 
 @if (!Model.Any())
 {
-    <p>You Have Not Rented a Movie Yet.</p>
+    <label id="error">You Have Not Rented a Movie Yet</label>
 }
 else
 {
@@ -61,22 +37,19 @@ else
             <th>
                 @Html.DisplayNameFor(model => model.rentalExpiration)
             </th>
-            <th></th>
         </tr>
 
         @foreach (var item in Model)
         {
             <tr>
-                <td id="movieName"> 
+                <td> 
                     @Html.DisplayFor(modelItem => item.rentalMovie)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.rentalExpiration)
                 </td>
-                <td>
-                    <div class="fb-share-button" data-href="https://netflix.com" data-layout="button" data-size="small" data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fnetflix.com%2F&amp;src=sdkpreparse">Share</a></div></td>
             </tr>
         }
-
+   
     </table>
 }

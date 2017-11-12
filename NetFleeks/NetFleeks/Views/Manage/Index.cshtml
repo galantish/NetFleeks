@@ -3,13 +3,15 @@
     ViewBag.Title = "Manage";
 }
 
-<h2>@ViewBag.Title.</h2>
+<h2 id="pageTitle">Manage</h2>
 
 <p class="text-success">@ViewBag.StatusMessage</p>
+<hr />
 <div>
-    <h4>Change your account settings</h4>
-    <hr />
-    <dl class="dl-horizontal">
+    <span class="label label-primary" style="font-size:18px;">Change Your Account Settings</span>
+
+    <br />
+    <dl class="dl-horizontal" id="accountSettings">
         <dt>Password:</dt>
         <dd>
             [

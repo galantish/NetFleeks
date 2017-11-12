@@ -64,7 +64,6 @@
 
 
 <div class="w3-content w3-display-container">
-    <img class="mySlides" src="~/Content/netfleeks2.png" style="width:60%; margin:auto">
     <img class="mySlides" src="~/Content/inception.jpg" style="width:60%; margin:auto">
     <img class="mySlides" src="~/Content/fifty_shades.jpg" style="width:60%; margin:auto">
     <img class="mySlides" src="~/Content/forrest_gump.jpg" style="width:60%; margin:auto">
@@ -75,6 +74,7 @@
     <img class="mySlides" src="~/Content/scream.jpg" style="width:60%; margin:auto">
     <img class="mySlides" src="~/Content/the_notebook.jpg" style="width:60%; margin:auto">
     <img class="mySlides" src="~/Content/the_wolf_of_wallstreet.jpg" style="width:60%; margin:auto">
+    <img class="mySlides" src="~/Content/netfleeks2.png" style="width:60%; margin:auto">
 </div>
 
 <script>
@@ -94,10 +94,12 @@
     }
 </script>
 
+<br />
+
 @if (User.Identity.IsAuthenticated)
 {
-    <a href="javascript:void(0)" class="recommend btn btn-large btn-info">Not sure what to watch? Let us help.</a>
-    <span class="recommendLoading" style="display:none;font-size:110%;padding-left:10px;"></span>
+    <a id="learningBtn" href="javascript:void(0)" class="recommend btn btn-primary">Not sure what to watch? Let us help.</a>
+    <span id="machineLearning" class="recommendLoading"></span>
 }
 
 <script type="text/javascript">

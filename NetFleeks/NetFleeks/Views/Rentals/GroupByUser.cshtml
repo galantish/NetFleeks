@@ -29,35 +29,61 @@
 
 @foreach (var user in Model.GroupBy(g => g.rentalUser))
 {
-    <label id="userLabel">@Html.DisplayFor(modelItem => user.Key)</label>
-    <table class="table table-hover table-bordered" id="rentalsTable">
-        <thead>
-            <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.movie)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.genre)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.rentalExpiration)
-                </th>
-            </tr>
-        </thead>
-       
-         @foreach (var item in user)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.movie)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.genre)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.rentalExpiration)
-                </td></tr>
-        }
+    <button class="accordion">@Html.DisplayFor(modelItem => user.Key)</button>
+    <div class="panel">
+        <table class="table table-hover table-bordered" id="rentalsTable">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.movie)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.genre)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.rentalExpiration)
+                    </th>
+                </tr>
+            </thead>
 
-    </table>
+            @foreach (var item in user)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.movie)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.genre)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.rentalExpiration)
+                    </td>
+                </tr>
+            }
+
+        </table>
+    </div>
+
 }
+ 
+<script>
+    var acc = document.getElementsByClassName("accordion");
+    var i;
+
+    for (i = 0; i < acc.length; i++)
+    {
+        acc[i].onclick = function(){
+            this.classList.toggle("active");
+            var panel = this.nextElementSibling;
+            if (panel.style.display === "block")
+            {
+                panel.style.display = "none";
+            
+            }
+            else
+            {
+                panel.style.display = "block";
+            }
+        }
+    }
+</script>

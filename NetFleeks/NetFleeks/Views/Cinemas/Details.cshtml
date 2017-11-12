@@ -1,15 +1,16 @@
 ﻿@model NetFleeks.Models.Cinemas
 
+<link rel="stylesheet" href="~/Content/CinemasMap.css" />
+
 @{
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
+<h2 id="pageTitle">@Html.DisplayFor(model => model.cinemaName) Details</h2>
 
 <div>
-    <h4>Cinemas</h4>
     <hr />
-    <dl class="dl-horizontal">
+    <dl class="dl-horizontal" id="details">
         <dt>
             @Html.DisplayNameFor(model => model.cinemaName)
         </dt>
@@ -27,8 +28,10 @@
         </dd>
 
     </dl>
+
+    <div style="margin-left: 7em">
+        @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+        @Html.ActionLink("Back to List", "Index")
+    </div>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+

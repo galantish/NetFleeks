@@ -18,7 +18,7 @@
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
         <div class="form-group">
-            <label class="control-label col-md-2" style="margin-left:-1em; text-align: left; width: 150px">Genre</label>
+            <label id="movieLabel" class="control-label col-md-2">Genre</label>
             <div class="col-md-10" style="margin-bottom:-1em">
                 @{
                     var genres = new List<SelectListItem>();
@@ -43,7 +43,7 @@
         </div>
 
         <div class="form-group">
-            <label class="control-label col-md-2" style="margin-left:-1em; text-align: left; width: 150px">Movie Name</label>
+            <label id="movieLabel" class="control-label col-md-2">Movie Name</label>
             <div class="col-md-10">
                 @Html.EditorFor(model => model.movieName, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.movieName, "", new { @class = "text-danger" })
@@ -51,7 +51,7 @@
         </div>
 
         <div class="form-group">
-            <label class="control-label col-md-2" style="margin-left:-1em; text-align: left; width: 150px">Date Added</label>
+            <label id="movieLabel" class="control-label col-md-2">Date Added</label>
             <div class="col-md-10">
                 @Html.EditorFor(model => model.dateAdded, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.dateAdded, "", new { @class = "text-danger" })
@@ -59,7 +59,7 @@
         </div>
 
         <div class="form-group">
-            <label class="control-label col-md-2" style="margin-left:-1em; text-align: left; width: 150px">Release Date</label>
+            <label id="movieLabel" class="control-label col-md-2">Release Date</label>
             <div class="col-md-10">
                 @Html.EditorFor(model => model.releaseDate, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.releaseDate, "", new { @class = "text-danger" })
@@ -67,7 +67,7 @@
         </div>
 
         <div class="form-group">
-            <label class="control-label col-md-2" style="margin-left:-1em; text-align: left; width: 150px">Actors</label>
+            <label id="movieLabel" class="control-label col-md-2">Actors</label>
             <div class="col-md-10">
                 @Html.EditorFor(model => model.actors, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.actors, "", new { @class = "text-danger" })
@@ -75,7 +75,7 @@
         </div>
 
         <div class="form-group">
-            <label class="control-label col-md-2" style="margin-left:-1em; text-align: left; width: 150px">Summary</label>
+            <label id="movieLabel" class="control-label col-md-2">Summary</label>
             <div class="col-md-10">
                 @Html.EditorFor(model => model.summary, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.summary, "", new { @class = "text-danger" })
@@ -83,7 +83,7 @@
         </div>
 
         <div class="form-group">
-            <label class="control-label col-md-2" style="margin-left:-1em; text-align: left; width: 150px">Membership Type</label>
+            <label id="movieLabel" class="control-label col-md-2">Membership Type</label>
             <div class="col-md-10" style="margin-bottom:-1em">
                 @{
                     var types = new List<SelectListItem>();
@@ -97,10 +97,12 @@
         </div>
 
         <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-success" />
+            <div class="col-md-offset-2 col-md-10" style="margin-left:12em">
+                <input type="submit" value="Save" class="btn btn-primary" />
             </div>
-            <div style="margin-left: 14em">
+            <br/>
+            <br />
+            <div style="margin-left: 11em; font-size: 16px;">
                 @Html.ActionLink("Back to List", "Index")
             </div>
         </div>

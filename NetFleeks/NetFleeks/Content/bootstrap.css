@@ -4507,7 +4507,8 @@ textarea.input-group-sm > .input-group-btn > .btn {
 }
 
 .navbar-inverse .navbar-brand {
-  color: red;
+  color: white;
+  font-size: 22px;
   font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   font-weight: bold;
 }

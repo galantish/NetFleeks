@@ -1,13 +1,15 @@
-﻿#details
+﻿
+#details
 {
     width: 100%;
     text-align:left;
+    font-size: 16px;
 }
 
 #details dt
 {
     text-align: left;
-    width: 160px;
+    width: 170px;
     margin-bottom: 10px;
 }
 
@@ -15,6 +17,13 @@
 {
     text-align: left;
     margin-left: auto;
+}
+
+#movieLabel
+{
+    text-align: left; 
+    width: 170px;
+    font-size: 16px;
 }
 
 #movieTable

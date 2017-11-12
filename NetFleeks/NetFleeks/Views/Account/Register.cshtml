@@ -1,4 +1,7 @@
 ﻿@model NetFleeks.Models.RegisterViewModel
+
+<link rel="stylesheet" href="~/Content/Login.css" />
+
 @using CaptchaMvc.HtmlHelpers
 
 @{
@@ -15,28 +18,28 @@
 
 
     <div class="form-group">
-        <label class="control-label col-md-2" style="text-align: left; width: 160px">First Name</label>
+        <label id="loginLabel" class="control-label col-md-2">First Name</label>
         <div class="col-md-10">
             @Html.TextBoxFor(m => m.fName, new { @class = "form-control" })
         </div>
     </div>
 
     <div class="form-group">
-        <label class="control-label col-md-2" style="text-align: left; width: 160px">Last Name</label>
+        <label id="loginLabel" class="control-label col-md-2">Last Name</label>
         <div class="col-md-10">
             @Html.TextBoxFor(m => m.lName, new { @class = "form-control" })
         </div>
     </div>
 
     <div class="form-group">
-        <label class="control-label col-md-2" style="text-align: left; width: 160px">Email</label>
+        <label id="loginLabel" class="control-label col-md-2">Email</label>
         <div class="col-md-10">
             @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
         </div>
     </div>
 
     <div class="form-group">
-        <label class="control-label col-md-2" style="text-align: left; width: 160px">Gender</label>
+        <label id="loginLabel" class="control-label col-md-2">Gender</label>
         <div class="col-md-10" style="margin-bottom:-1em">
             @{
                 var genders = new List<SelectListItem>();
@@ -49,14 +52,14 @@
     </div>
 
     <div class="form-group">
-        <label class="control-label col-md-2" style="text-align: left; width: 160px">Date of Birth</label>
+        <label id="loginLabel" class="control-label col-md-2">Date of Birth</label>
         <div class="col-md-10">
             @Html.TextBoxFor(m => m.birth, new { @class = "form-control" })
         </div>
     </div>
 
     <div class="form-group">
-        <label class="control-label col-md-2" style="text-align: left; width: 160px">Membership Type</label>
+        <label id="loginLabel" class="control-label col-md-2">Membership Type</label>
         <div class="col-md-10" style="margin-bottom:-1em">
             @{
                 var types = new List<SelectListItem>();
@@ -69,21 +72,21 @@
     </div>
 
     <div class="form-group">
-        <label class="control-label col-md-2" style="text-align: left; width: 160px">Password</label>
+        <label id="loginLabel" class="control-label col-md-2">Password</label>
         <div class="col-md-10">
             @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
         </div>
     </div>
 
     <div class="form-group">
-        <label class="control-label col-md-2" style="text-align: left; width: 160px">Confirm password</label>
+        <label id="loginLabel" class="control-label col-md-2">Confirm password</label>
         <div class="col-md-10">
             @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
         </div>
     </div>
 
     <div class="form-group">
-        <label class="control-label col-md-2" style="text-align: left; width: 160px">Favorite Genre</label>
+        <label id="loginLabel" class="control-label col-md-2">Favorite Genre</label>
         <div class="col-md-10" style="margin-bottom:-1em">
             @{
                 var genres = new List<SelectListItem>();

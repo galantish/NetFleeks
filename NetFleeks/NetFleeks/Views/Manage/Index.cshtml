@@ -1,4 +1,8 @@
 ﻿@model NetFleeks.Models.IndexViewModel
+
+<link rel="stylesheet" href="~/Content/Login.css" />
+
+
 @{
     ViewBag.Title = "Manage";
 }
@@ -7,11 +11,12 @@
 
 <p class="text-success">@ViewBag.StatusMessage</p>
 <hr />
+
 <div>
     <span class="label label-primary" style="font-size:18px;">Change Your Account Settings</span>
 
-    <br />
-    <dl class="dl-horizontal" id="accountSettings">
+    <hr />
+    <dl class="dl-horizontal" id="manageLogin">
         <dt>Password:</dt>
         <dd>
             [

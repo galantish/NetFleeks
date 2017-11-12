@@ -73,6 +73,127 @@ namespace NetFleeks.Controllers
 
         }
 
+        [HttpPost]
+        public ActionResult Search(string genreID, string membershipTypeID, string userName)
+        {
+            int queryParams = 0;
+            int membershipCheck;
+            int genreCheck;
+
+            if (Int32.TryParse(membershipTypeID, out membershipCheck))
+            {
+                if (membershipCheck > 0)
+                    queryParams += 1;
+            }
+            if (Int32.TryParse(genreID, out genreCheck))
+            {
+                if (genreCheck > 0)
+                    queryParams += 2;
+            }
+            if (string.IsNullOrEmpty(userName))
+            {
+                queryParams += 4;
+            }
+
+            var movies = db.Movies.Include(m => m.genre);
+            IEnumerable<Movies> moviesQuery = movies;
+            var rentals = db.Rentals.Where(m => m.rentalExpiration >= DateTime.Today);
+            IEnumerable<Rentals> rentalsQuery = rentals;
+
+            switch (queryParams)
+            {
+                case 1:
+                    moviesQuery = movies.Where(m => m.membershipType == membershipCheck);
+                    break;
+                case 2:
+                    moviesQuery = movies.Where(m => m.genreID == genreCheck);
+                    break;
+                case 3:
+                    moviesQuery = movies.Where(m => m.membershipType == membershipCheck && m.genreID == genreCheck);
+                    break;
+                case 4:
+                    rentalsQuery = rentals.Where(m => m.rentalUser == userName);
+                    break;
+                case 5:
+                    moviesQuery = movies.Where(m => m.membershipType == membershipCheck);
+                    rentalsQuery = rentals.Where(m => m.rentalUser == userName);
+                    break;
+                case 6:
+                    moviesQuery = movies.Where(m => m.genreID == genreCheck);
+                    rentalsQuery = rentals.Where(m => m.rentalUser == userName);
+                    break;
+                case 7:
+                    moviesQuery = movies.Where(m => m.membershipType == membershipCheck && m.genreID == genreCheck);
+                    rentalsQuery = rentals.Where(m => m.rentalUser == userName);
+                    break;
+                default:
+                    break;
+            }
+
+            var rentalsGenre = rentalsQuery.Join(moviesQuery, r => r.rentalMovie, m => m.movieName, (r, m) => new RentalViewModel { movie = r.rentalMovie, genre = m.genre.genreName, rentalUser = r.rentalUser, rentalExpiration = r.rentalExpiration });
+            return View("Index", rentalsGenre.ToList());
+        }
+
+        [HttpPost]
+        public ActionResult SearchAll(string genreID, string membershipTypeID, string userName)
+        {
+            int queryParams = 0;
+            int membershipCheck;
+            int genreCheck;
+
+            if (Int32.TryParse(membershipTypeID, out membershipCheck))
+            {
+                if (membershipCheck > 0)
+                    queryParams += 1;
+            }
+            if (Int32.TryParse(genreID, out genreCheck))
+            {
+                if (genreCheck > 0)
+                    queryParams += 2;
+            }
+            if (string.IsNullOrEmpty(userName))
+            {
+                queryParams += 4;
+            }
+
+            var movies = db.Movies.Include(m => m.genre);
+            IEnumerable<Movies> moviesQuery = movies;
+            var rentals = db.Rentals;
+            IEnumerable<Rentals> rentalsQuery = rentals;
+
+            switch (queryParams)
+            {
+                case 1:
+                    moviesQuery = movies.Where(m => m.membershipType == membershipCheck);
+                    break;
+                case 2:
+                    moviesQuery = movies.Where(m => m.genreID == genreCheck);
+                    break;
+                case 3:
+                    moviesQuery = movies.Where(m => m.membershipType == membershipCheck && m.genreID == genreCheck);
+                    break;
+                case 4:
+                    rentalsQuery = rentals.Where(m => m.rentalUser == userName);
+                    break;
+                case 5:
+                    moviesQuery = movies.Where(m => m.membershipType == membershipCheck);
+                    rentalsQuery = rentals.Where(m => m.rentalUser == userName);
+                    break;
+                case 6:
+                    moviesQuery = movies.Where(m => m.genreID == genreCheck);
+                    rentalsQuery = rentals.Where(m => m.rentalUser == userName);
+                    break;
+                case 7:
+                    moviesQuery = movies.Where(m => m.membershipType == membershipCheck && m.genreID == genreCheck);
+                    rentalsQuery = rentals.Where(m => m.rentalUser == userName);
+                    break;
+                default:
+                    break;
+            }
+
+            var rentalsGenre = rentalsQuery.Join(moviesQuery, r => r.rentalMovie, m => m.movieName, (r, m) => new RentalViewModel { movie = r.rentalMovie, genre = m.genre.genreName, rentalUser = r.rentalUser, rentalExpiration = r.rentalExpiration });
+            return View("Index", rentalsGenre.ToList());
+        }
 
         public ActionResult Rent(string movie)
         {

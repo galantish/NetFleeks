@@ -100,9 +100,6 @@
             @Html.DisplayNameFor(model => model.movie)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.dateAdded)
-        </th>
-        <th>
             @Html.DisplayNameFor(model => model.releaseDate)
         </th>
         <th>
@@ -113,6 +110,9 @@
         </th>
         <th>
             @Html.DisplayNameFor(model => model.membershipType)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.dateAdded)
         </th>
     </tr>
 
@@ -126,10 +126,7 @@
                 @Html.ActionLink(item.movie, "Rent", "Rentals", new { movie = item.movie }, null)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.dateAdded)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.releaseDate)
+                @Html.DisplayFor(modelItem => item.releaseDate.Year)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.actors)
@@ -139,6 +136,9 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.membershipType)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.dateAdded)
             </td>
         </tr>
     }

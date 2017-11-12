@@ -4507,7 +4507,8 @@ textarea.input-group-sm > .input-group-btn > .btn {
 }
 
 .navbar-inverse .navbar-brand {
-  color: white;
+  
+  color: red;
   font-size: 22px;
   font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   font-weight: bold;
@@ -4524,6 +4525,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
   font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   font-size: 16px;
 }
+
 
 .navbar-inverse .navbar-nav > li > a {
   color: #fff;
@@ -5412,6 +5414,7 @@ a.list-group-item:focus {
 .panel-title > a {
   color: inherit;
 }
+
 
 .panel-footer {
   padding: 10px 15px;

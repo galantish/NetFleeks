@@ -19,37 +19,77 @@ namespace NetFleeks.Models
             return View();
         }
 
-        public ActionResult GenreCount()
+        /*  public ActionResult GenreCount()
+          {
+              var rentals = db.Rentals;
+              var rentalsGenre = rentals.Join(db.Movies, r => r.rentalMovie, m => m.movieName, (r, m) => new RentalViewModel { movie = r.rentalMovie, genre = m.genre.genreName, rentalUser = r.rentalUser, rentalExpiration = r.rentalExpiration });
+              var pieGenreCollection = rentalsGenre.GroupBy(t => t.genre).Select(i => new { genre = i.Key, Count = i.Count() });
+              StringBuilder genreBuilder = new StringBuilder();
+
+              genreBuilder.AppendLine("genre,count");
+
+              foreach (var currGenre in pieGenreCollection)
+              {
+                  genreBuilder.AppendFormat("{0},{1}\\n", currGenre.genre, currGenre.Count);
+              }
+              Stats stats = new Stats() { genreCsv = genreBuilder.ToString() };
+              return View("Index", stats);
+
+          }
+
+          public ActionResult TypeCount()
+          {
+
+              var userGroups = db.Users.GroupBy(x => x.membershipTypeID).Select(x => new { ID = x.Key, Count = x.Count() });
+
+              int premiumCount = userGroups.Single(x => x.ID == db.MembershipTypes.FirstOrDefault(mem => mem.membershipType.Equals("Premium")).ID).Count;
+              int freeCount = userGroups.Single(x => x.ID == db.MembershipTypes.FirstOrDefault(mem => mem.membershipType.Equals("Free")).ID).Count;
+
+              string memTypesCSV = string.Format("type,count\\nPremium,{0}\\nFree,{1}", premiumCount, freeCount);
+
+              Stats stats = new Stats() { memTypeCsv = memTypesCSV };
+              return View("TypeCount", stats);
+
+          }*/
+
+
+
+        // GET: Posts/StatsByDate/
+       /* public ActionResult Stats(int type)
         {
-            var rentals = db.Rentals;
-            var rentalsGenre = rentals.Join(db.Movies, r => r.rentalMovie, m => m.movieName, (r, m) => new RentalViewModel { movie = r.rentalMovie, genre = m.genre.genreName, rentalUser = r.rentalUser, rentalExpiration = r.rentalExpiration });
-            var pieGenreCollection = rentalsGenre.GroupBy(t => t.genre).Select(i => new { genre = i.Key, Count = i.Count() });
-            StringBuilder genreBuilder = new StringBuilder();
+            var results = db.Posts.ToList().OrderBy(post => post.PublishedDate);
 
-            genreBuilder.AppendLine("genre,count");
-
-            foreach (var currGenre in pieGenreCollection)
+            if (type == 1)
             {
-                genreBuilder.AppendFormat("{0},{1}\\n", currGenre.genre, currGenre.Count);
+                var res = results.GroupBy(post2 => post2.PublishedDate.ToShortDateString(), (key, g) =>
+                {
+                    var arr = new String[2];
+                    arr[0] = g.Count().ToString();
+                    arr[1] = key;
+
+                    return arr;
+                }).ToArray();
+
+                ViewBag.Title = "Posts per date";
+
+                return View("Stats", res);
+
             }
-            Stats stats = new Stats() { genreCsv = genreBuilder.ToString() };
-            return View("Index", stats);
+            else
+            {
+                var res = results.GroupBy(post2 => post2.Fan.Username, (key, g) => {
+                    var arr = new String[2];
+                    arr[0] = g.Count().ToString();
+                    arr[1] = key;
 
-        }
+                    return arr;
+                }).ToArray();
 
-        public ActionResult TypeCount()
-        {
+                ViewBag.Title = "Posts per User";
 
-            var userGroups = db.Users.GroupBy(x => x.membershipTypeID).Select(x => new { ID = x.Key, Count = x.Count() });
+                return View("Stats", res);
 
-            int premiumCount = userGroups.Single(x => x.ID == db.MembershipTypes.FirstOrDefault(mem => mem.membershipType.Equals("Premium")).ID).Count;
-            int freeCount = userGroups.Single(x => x.ID == db.MembershipTypes.FirstOrDefault(mem => mem.membershipType.Equals("Free")).ID).Count;
-
-            string memTypesCSV = string.Format("type,count\\nPremium,{0}\\nFree,{1}", premiumCount, freeCount);
-
-            Stats stats = new Stats() { memTypeCsv = memTypesCSV };
-            return View("TypeCount", stats);
-
-        }
+            }
+        }*/
     }
 }

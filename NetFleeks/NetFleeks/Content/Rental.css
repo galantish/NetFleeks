@@ -5,6 +5,12 @@
     margin-left: -2em;
 }
 
+#advancedOptionsLabel
+{
+    margin-left: 9em;
+    font-size: 18px; 
+}
+
 #details
 {
     width: 100%;

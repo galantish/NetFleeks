@@ -24,22 +24,19 @@ namespace NetFleeks.Models
               var rentals = db.Rentals;
               var rentalsGenre = rentals.Join(db.Movies, r => r.rentalMovie, m => m.movieName, (r, m) => new RentalViewModel { movie = r.rentalMovie, genre = m.genre.genreName, rentalUser = r.rentalUser, rentalExpiration = r.rentalExpiration });
               var pieGenreCollection = rentalsGenre.GroupBy(t => t.genre).Select(i => new { genre = i.Key, Count = i.Count() });
-              StringBuilder genreBuilder = new StringBuilder();
+              
 
               genreBuilder.AppendLine("genre,count");
 
-              foreach (var currGenre in pieGenreCollection)
-              {
-                  genreBuilder.AppendFormat("{0},{1}\\n", currGenre.genre, currGenre.Count);
-              }
-              Stats stats = new Stats() { genreCsv = genreBuilder.ToString() };
-              return View("Index", stats);
+             
+             
+              return View("Stats", pieGenreCollection.ToArray());
 
           }
 
           public ActionResult TypeCount()
           {
-
+          //Need to change to Array but with the same logic
               var userGroups = db.Users.GroupBy(x => x.membershipTypeID).Select(x => new { ID = x.Key, Count = x.Count() });
 
               int premiumCount = userGroups.Single(x => x.ID == db.MembershipTypes.FirstOrDefault(mem => mem.membershipType.Equals("Premium")).ID).Count;
@@ -55,41 +52,41 @@ namespace NetFleeks.Models
 
 
         // GET: Posts/StatsByDate/
-       /* public ActionResult Stats(int type)
-        {
-            var results = db.Posts.ToList().OrderBy(post => post.PublishedDate);
+        /* public ActionResult Stats(int type)
+         {
+             var results = db.Posts.ToList().OrderBy(post => post.PublishedDate);
 
-            if (type == 1)
-            {
-                var res = results.GroupBy(post2 => post2.PublishedDate.ToShortDateString(), (key, g) =>
-                {
-                    var arr = new String[2];
-                    arr[0] = g.Count().ToString();
-                    arr[1] = key;
+             if (type == 1)
+             {
+                 var res = results.GroupBy(post2 => post2.PublishedDate.ToShortDateString(), (key, g) =>
+                 {
+                     var arr = new String[2];
+                     arr[0] = g.Count().ToString();
+                     arr[1] = key;
 
-                    return arr;
-                }).ToArray();
+                     return arr;
+                 }).ToArray();
 
-                ViewBag.Title = "Posts per date";
+                 ViewBag.Title = "Posts per date";
 
-                return View("Stats", res);
+                 return View("Stats", res);
 
-            }
-            else
-            {
-                var res = results.GroupBy(post2 => post2.Fan.Username, (key, g) => {
-                    var arr = new String[2];
-                    arr[0] = g.Count().ToString();
-                    arr[1] = key;
+             }
+             else
+             {
+                 var res = results.GroupBy(post2 => post2.Fan.Username, (key, g) => {
+                     var arr = new String[2];
+                     arr[0] = g.Count().ToString();
+                     arr[1] = key;
 
-                    return arr;
-                }).ToArray();
+                     return arr;
+                 }).ToArray();
 
-                ViewBag.Title = "Posts per User";
+                 ViewBag.Title = "Posts per User";
 
-                return View("Stats", res);
+                 return View("Stats", res);
 
-            }
-        }*/
+             }
+         }*/
     }
 }

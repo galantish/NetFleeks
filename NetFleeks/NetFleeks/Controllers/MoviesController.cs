@@ -68,7 +68,6 @@ namespace NetFleeks.Controllers
 
         }
 
-        // GET: Movies
         [HttpPost]
         public ActionResult Search(string genreID, string membershipTypeID, string date)
         {

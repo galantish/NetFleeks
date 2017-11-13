@@ -127,8 +127,6 @@
 					movieTitles.push(movieData.title);
 				}
 
-				$('.selectfilm').typeahead({ source: movieTitles });
-
 				var addFilmByTitle = function (val) {
 					if (movieTitleToData[val]) {
 						var movieData = movieTitleToData[val];

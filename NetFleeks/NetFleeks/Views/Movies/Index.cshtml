@@ -122,7 +122,7 @@
                 @Html.DisplayFor(modelItem => item.movie)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.releaseDate.Year)
+                @Html.DisplayFor(modelItem => item.releaseDate)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.actors)
@@ -134,7 +134,7 @@
                 @Html.DisplayFor(modelItem => item.membershipType)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.dateAdded.Date)
+                @Html.DisplayFor(modelItem => item.dateAdded)
             </td>
             <td style="color:#1679c1;">
                 @Html.ActionLink("Edit", "Edit", new { id = item.ID })

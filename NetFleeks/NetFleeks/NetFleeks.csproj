@@ -263,7 +263,6 @@
     <Content Include="Content\logo.png" />
     <Content Include="Content\netfleeks1.png" />
     <Content Include="Content\netfleeks2.png" />
-    <Content Include="Content\d3.css" />
     <Content Include="Content\About.css" />
     <Content Include="Content\Manage.css" />
     <Content Include="Content\scream.jpg" />

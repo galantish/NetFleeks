@@ -126,7 +126,7 @@
                 @Html.ActionLink(item.movie, "Rent", "Rentals", new { movie = item.movie }, null)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.releaseDate.Year)
+                @Html.DisplayFor(modelItem => item.releaseDate)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.actors)

@@ -177,11 +177,19 @@ namespace NetFleeks.Controllers
         [Authorize(Roles = "Manager")]
         public ActionResult Create([Bind(Include = "ID,genreID,movieName,dateAdded,releaseDate,actors,summary, membershipType")] Movies movies)
         {
+
             if (ModelState.IsValid)
             {
-                db.Movies.Add(movies);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                if (movies.dateAdded < movies.releaseDate || movies.dateAdded > DateTime.Today || movies.releaseDate > DateTime.Today )
+                {
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    db.Movies.Add(movies);
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
             }
 
             ViewBag.genreID = new SelectList(db.Genres, "ID", "ID", movies.genreID);
